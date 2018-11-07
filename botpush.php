@@ -67,6 +67,10 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $isData = sizeof($data);
              
     if(strpos($message, 'เริ่มทดสอบ') !== false){
+	    
+	    while(true){
+	    
+	    
            if (strpos($message, 'สอนบอท') !== false) {
                  if (strpos($message, 'สอนบอท') !== false) {
                     $x_tra = str_replace("สอนบอท","", $message);
@@ -170,6 +174,10 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     break;                                         
 		}
 	}
+	if(strpos($message, 'เลิกทำ') !== false){
+		break;
+	}
+    }
 	else{
 		$textReplyMessage = "ว่ายังไงนะครับ";
                 $textMessage = new TextMessageBuilder($textReplyMessage);
