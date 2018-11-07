@@ -49,12 +49,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $arrayHeader[] = "Content-Type: application/json";
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 
-   $replyToken = $events['events'][0]['replyToken'];
-   $message = $events['events'][0]['message']['text'];
-
-   if(strpos($message, 'เริ่มทดสอบ') !== false){
-	    
-	    while(true){	
+   
 
 
     if(!is_null($events)){
@@ -74,7 +69,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $data = json_decode($json);
     $isData = sizeof($data);
              
-    
+    if(strpos($message, 'เริ่มทดสอบ') !== false){
+	    
+	    while(true){	
 	    
 	    
            if (strpos($message, 'สอนบอท') !== false) {
