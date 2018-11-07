@@ -173,6 +173,10 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 								$actionBuilder  // กำหนด action object
 							)
 							);  
+							
+							$multiMessage = new MultiMessageBuilder;
+							$multiMessage->add($buttonMessage);
+							$replyData = $multiMessage; 
 						}
 					}
 	
@@ -182,7 +186,6 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 						$textMessage = new TextMessageBuilder($textReplyMessage); 
 							
 						$multiMessage = new MultiMessageBuilder;
-						$multiMessage->add($buttonMessage);
 						$multiMessage->add($textMessage);   
 						$replyData = $multiMessage; 
 					}
