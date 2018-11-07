@@ -202,32 +202,33 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
         default:
                     
             $actionBuilder = array(
-		new MessageTemplateActionBuilder(
-		'ใช่',// ข้อความแสดงในปุ่ม
-		'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-		),
-		new MessageTemplateActionBuilder(
-		'ไม่',// ข้อความแสดงในปุ่ม
-		'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-		),                   
-		);
-	   $imageUrl = 'https://www.picz.in.th/images/2018/10/23/kFKkru.jpg';    
-	   $buttonMessage = new TemplateMessageBuilder('Button Template',
-		new ButtonTemplateBuilder(
-		'คำที่คุณพิมพ์หมายถึง ใช่ หรือ ไม่', // กำหนดหัวเรื่อง
-		'กรุณาเลือก 1 ข้อ', // กำหนดรายละเอียด
-		$imageUrl, // กำหนด url รุปภาพ
-		actionBuilder  // กำหนด action object
-		)
-		);  
-								
-	$textReplyMessage = "หากที่คุณพิมพ์ไม่ได้หมายถึง 'ใช่' และ 'ไม่'"+\n+"คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
-	$textMessage = new TextMessageBuilder($textReplyMessage); 
-					
-	$multiMessage = new MultiMessageBuilder;
-	$multiMessage->add($buttonMessage);
-	$multiMessage->add($textMessage);   
-	$replyData = $multiMessage; 
+                                new MessageTemplateActionBuilder(
+                                    'ใช่',// ข้อความแสดงในปุ่ม
+                                    'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                ),
+                                new MessageTemplateActionBuilder(
+                                    'ไม่',// ข้อความแสดงในปุ่ม
+                                    'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                ),                   
+                            );
+                        
+                    $imageUrl = 'https://www.picz.in.th/images/2018/10/23/kFKkru.jpg';    
+                    $buttonMessage = new TemplateMessageBuilder('Button Template',
+                        new ButtonTemplateBuilder(
+                                'คำที่คุณพิมพ์หมายถึง ใช่ หรือ ไม่', // กำหนดหัวเรื่อง
+                                'กรุณาเลือก 1 ข้อ', // กำหนดรายละเอียด
+                                $imageUrl, // กำหนด url รุปภาพ
+                                $actionBuilder  // กำหนด action object
+                        )
+                    );  
+                    
+                    $textReplyMessage = "หากสิ่งที่คุณหมายถึงไม่ใช่ทั้ง 'ใช่' และ 'ไม่'"+/n+"คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
+                    $textMessage = new TextMessageBuilder($textReplyMessage); 
+                        
+                    $multiMessage = new MultiMessageBuilder;
+                    $multiMessage->add($buttonMessage);
+                    $multiMessage->add($textMessage);   
+                    $replyData = $multiMessage; 
             break;                                         
 	}
 $response = $bot->replyMessage($replyToken,$replyData);
