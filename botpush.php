@@ -85,7 +85,6 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
    	 else if(strpos($message, 'เริ่มทดสอบ') !== false){
 	    $message = "D";
 	}
-
         switch ($message) {
             case "A":
 			
@@ -125,13 +124,11 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $multiMessage->add($textMessage);
                     $multiMessage->add($stickerMessage);
                     $replyData = $multiMessage; 
-                    break;
+            break;
 					
             case "B":
-                    
-                    if($isData >0){
-                       foreach($data as $rec){
-                        
+                if($isData >0){
+                    foreach($data as $rec){
                         $textReplyMessage = $rec->system;
                         $textMessage = new TextMessageBuilder($textReplyMessage);   
                            
@@ -140,68 +137,67 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                         $replyData = $multiMessage; 
                         
                        }
-                    }
-
-		    else{
+                }
+				else{
 	  
-			$textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
-			$textMessage = new TextMessageBuilder($textReplyMessage); 
+					$textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
+					$textMessage = new TextMessageBuilder($textReplyMessage); 
 							
-			$multiMessage = new MultiMessageBuilder;
-			$multiMessage->add($textMessage);   
-			$replyData = $multiMessage; 
-		    }
-						  
-		    break;      
-		case "C":
-			
-			if($isData2 >0){	
-				foreach($data2 as $rec2){
-					$count++;
-					$textReplyMessage = $rec2->system;
-					$textMessage = new TextMessageBuilder($textReplyMessage);   
-					$textReplyMessage2 = $count;
-					$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
 					$multiMessage = new MultiMessageBuilder;
-					$multiMessage->add($textMessage);  
-					$multiMessage->add($textMessage2);  
+					$multiMessage->add($textMessage);   
 					$replyData = $multiMessage; 
 				}
-			}
-				
-			else{
-				$actionBuilder = array(
-				new MessageTemplateActionBuilder(
-					'ใช่',// ข้อความแสดงในปุ่ม
-					'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-					),
-					new MessageTemplateActionBuilder(
-					'ไม่',// ข้อความแสดงในปุ่ม
-					'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-					),                   
-					);
-				$imageUrl = 'https://www.picz.in.th/images/2018/10/23/kFKkru.jpg';    
-				$buttonMessage = new TemplateMessageBuilder('Button Template',
-						new ButtonTemplateBuilder(
-						'คำที่คุณพิมพ์หมายถึง ใช่ หรือ ไม่', // กำหนดหัวเรื่อง
-						'กรุณาเลือก 1 ข้อ', // กำหนดรายละเอียด
-						$imageUrl, // กำหนด url รุปภาพ
-						$actionBuilder  // กำหนด action object
-					)
-					);  
-							
-				$multiMessage = new MultiMessageBuilder;
-				$multiMessage->add($buttonMessage);
-				$replyData = $multiMessage; 
+						  
+		    break;      
+			case "C":
+			
+				if($isData2 >0){	
+					foreach($data2 as $rec2){
+						$count++;
+						$textReplyMessage = $rec2->system;
+						$textMessage = new TextMessageBuilder($textReplyMessage);   
+						$textReplyMessage2 = $count;
+						$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
+						$multiMessage = new MultiMessageBuilder;
+						$multiMessage->add($textMessage);  
+						$multiMessage->add($textMessage2);  
+						$replyData = $multiMessage; 
+					}
 				}
-			}
+				
+				else{
+					$actionBuilder = array(
+					new MessageTemplateActionBuilder(
+						'ใช่',// ข้อความแสดงในปุ่ม
+						'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+						),
+						new MessageTemplateActionBuilder(
+						'ไม่',// ข้อความแสดงในปุ่ม
+						'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+						),                   
+						);
+					$imageUrl = 'https://www.picz.in.th/images/2018/10/23/kFKkru.jpg';    
+					$buttonMessage = new TemplateMessageBuilder('Button Template',
+							new ButtonTemplateBuilder(
+							'คำที่คุณพิมพ์หมายถึง ใช่ หรือ ไม่', // กำหนดหัวเรื่อง
+							'กรุณาเลือก 1 ข้อ', // กำหนดรายละเอียด
+							$imageUrl, // กำหนด url รุปภาพ
+							$actionBuilder  // กำหนด action object
+						)
+						);  
+								
+					$multiMessage = new MultiMessageBuilder;
+					$multiMessage->add($buttonMessage);
+					$replyData = $multiMessage; 
+				}
+			
 		    break;
-		case "D":
-					$textReplyMessage = "คุณคิดว่า คุณสามารถทำให้ดีกว่านี้ได้";
-                    $textMessage = new TextMessageBuilder($textReplyMessage); 
-                    $multiMessage = new MultiMessageBuilder;
-                    $multiMessage->add($textMessage);   
-                    $replyData = $multiMessage; 
+			case "D":
+				$textReplyMessage = "คุณคิดว่า คุณสามารถทำให้ดีกว่านี้ได้";
+                $textMessage = new TextMessageBuilder($textReplyMessage); 
+                $multiMessage = new MultiMessageBuilder;
+                $multiMessage->add($textMessage);   
+                $replyData = $multiMessage; 
 		   break;
         default:
                     
