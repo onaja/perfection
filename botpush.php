@@ -160,11 +160,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                         
                        }
                     }
-		    
-		    
-		    
-		    
-		    }
+	
                     else{
                     
                         $actionBuilder = array(
