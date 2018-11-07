@@ -48,7 +48,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $arrayHeader = array();
     $arrayHeader[] = "Content-Type: application/json";
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
-   
+
+   $replyToken = $events['events'][0]['replyToken'];
    $message2 = $events['events'][0]['message']['text'];
 
    if(strpos($message2, 'เริ่มทดสอบ') !== false){
