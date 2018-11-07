@@ -185,7 +185,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 		}
 	}
 	else{
-		$textReplyMessage = "ว่ายังไงนะครับ";
+		$textReplyMessage = "ว่าไงนะ";
                 $textMessage = new TextMessageBuilder($textReplyMessage);
                 $multiMessage = new MultiMessageBuilder;
                 $multiMessage->add($textMessage);
