@@ -201,7 +201,6 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 		    $textReplyMessage = "คุณคิดว่า คุณสามารถทำให้ดีกว่านี้ได้";
                     $textMessage = new TextMessageBuilder($textReplyMessage); 
                     $multiMessage = new MultiMessageBuilder;
-                    $multiMessage->add($buttonMessage);
                     $multiMessage->add($textMessage);   
                     $replyData = $multiMessage; 
 		   break;
