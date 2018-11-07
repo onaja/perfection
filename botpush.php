@@ -173,15 +173,15 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $replyData = $multiMessage;   
                     break;                                         
 		}
+	
+		if(strpos($message, 'เลิกทำ') !== false){
+			break;
+		}
+		}
 	}
-	if(strpos($message, 'เลิกทำ') !== false){
-		break;
-	}
-    }
 	else{
 		$textReplyMessage = "ว่ายังไงนะครับ";
                 $textMessage = new TextMessageBuilder($textReplyMessage);
-
                 $multiMessage = new MultiMessageBuilder;
                 $multiMessage->add($textMessage);
                 $replyData = $multiMessage;   
