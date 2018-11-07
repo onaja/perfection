@@ -178,9 +178,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $multiMessage = new MultiMessageBuilder;
                     $multiMessage->add($textMessage);
                     $replyData = $multiMessage;   
-                    break;                                      
-            }
-            break;
+                    break;                                         
 }
 $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
