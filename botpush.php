@@ -70,9 +70,16 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $isData = sizeof($data);
              
     if(strpos($message, 'เริ่มทดสอบ') !== false){
-	    
+	    $message = 'เลิก';
 	    while(true){	
 	    
+		    $replyToken = $events['events'][0]['replyToken'];
+		    $typeMessage = $events['events'][0]['message']['type'];
+		    //รับข้อความจากผู้ใช้
+		    $message = $events['events'][0]['message']['text'];
+		    $message = strtolower($message);
+		    //รับ id ของผู้ใช้
+		    $id = $events['events'][0]['source']['userId'];   
 	    
            if (strpos($message, 'สอนบอท') !== false) {
                  if (strpos($message, 'สอนบอท') !== false) {
@@ -176,7 +183,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $replyData = $multiMessage;   
                     break;                                         
 		}
-	
+		$message = 'เลิกทำ';
 		if(strpos($message, 'เลิกทำ') !== false){
 			break;
 		}
