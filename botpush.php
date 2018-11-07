@@ -50,9 +50,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 
    $replyToken = $events['events'][0]['replyToken'];
-   $message2 = $events['events'][0]['message']['text'];
+   $message = $events['events'][0]['message']['text'];
 
-   if(strpos($message2, 'เริ่มทดสอบ') !== false){
+   if(strpos($message, 'เริ่มทดสอบ') !== false){
 	    
 	    while(true){	
 
@@ -180,7 +180,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     break;                                         
 		}
 	
-		if(strpos($message2, 'เลิกทำ') !== false || strpos($message, 'เลิกทำ') !== false){
+		if(strpos($message, 'เลิกทำ') !== false){
 			break;
 		}
 		}
