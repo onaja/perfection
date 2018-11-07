@@ -170,26 +170,13 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     break;                                         
 		}
 	}
-	else if($isData >0){
-		if($isData >0){
-		foreach($data as $rec){
-                        
-                        $textReplyMessage = $rec->system;
-                        $textMessage = new TextMessageBuilder($textReplyMessage);   
-                           
-                        $multiMessage = new MultiMessageBuilder;
-                        $multiMessage->add($textMessage);      
-                        $replyData = $multiMessage; 
-                        
-                       }
-		}
-		else{
-		    $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
-                    $textMessage = new TextMessageBuilder($textReplyMessage); 
-                        
-                    $multiMessage = new MultiMessageBuilder;       
-                    $multiMessage->add($textMessage);   
-                    $replyData = $multiMessage; 
+	else{
+		$textReplyMessage = "ว่ายังไงนะครับ";
+                $textMessage = new TextMessageBuilder($textReplyMessage);
+
+                $multiMessage = new MultiMessageBuilder;
+                $multiMessage->add($textMessage);
+                $replyData = $multiMessage;   
 	}
 }
 $response = $bot->replyMessage($replyToken,$replyData);
