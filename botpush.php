@@ -222,7 +222,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                         )
                     );  
                     
-                    $textReplyMessage = "หากสิ่งที่คุณหมายถึงไม่ใช่ทั้ง 'ใช่' และ 'ไม่'"+/n+"คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
+                    $textReplyMessage = "หากสิ่งที่คุณหมายถึงไม่ใช่ทั้ง 'ใช่' และ 'ไม่' คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
                     $textMessage = new TextMessageBuilder($textReplyMessage); 
                         
                     $multiMessage = new MultiMessageBuilder;
