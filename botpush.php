@@ -50,56 +50,63 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 
    
-
-
- 
-    $replyToken = $events['events'][0]['replyToken'];
-    $typeMessage = $events['events'][0]['message']['type'];
+    $replyToken2 = $events['events'][0]['replyToken'];
     //รับข้อความจากผู้ใช้
-    $message = $events['events'][0]['message']['text'];
-    $message = strtolower($message);
-    //รับ id ของผู้ใช้
-    $id = $events['events'][0]['source']['userId'];   
-    //เชื่อมต่อ mlab
-    $strUrl = "https://api.line.me/v2/bot/message/reply";
-    $api_key="7vVKdrk-Rg7qp8C5KFUrkQRWmAJaazgQ";
-    $url = 'https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'';
-    $json = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
-    $data = json_decode($json);
-    $isData = sizeof($data);
-             
+    $message2 = $events['events'][0]['message']['text'];
+    $message2 = strtolower($message);
 
-           if (strpos($message, 'สอนบอท') !== false) {
-                 if (strpos($message, 'สอนบอท') !== false) {
-                    $x_tra = str_replace("สอนบอท","", $message);
-                    $pieces = explode("|", $x_tra);
-                    $_user=str_replace("[","",$pieces[0]);
-                    $_system=str_replace("]","",$pieces[1]);
-                     //Post New Data
-                    $newData = json_encode(
-                      array(
-                        'user' => $_user,
-                        'system'=> $_system
-                      )
-                    );
-                $opts = array(
-                   'http' => array(
-                   'method' => "POST",
-                   'header' => "Content-type: application/json",
-                   'content' => $newData
-               )
-            );
-            $context = stream_context_create($opts);
-            $returnValue = file_get_contents($url,false,$context);
-            $message = "A";
-          }
-        }
-        else{
-            $message = "B";
-        }
+   if(strpos($message2, 'เริ่มทำ') !== false) {
+	   
+	   $replyToken = $events['events'][0]['replyToken'];
+	    //รับข้อความจากผู้ใช้
+	    $message = $events['events'][0]['message']['text'];
+	    $message = strtolower($message);
+	    //รับ id ของผู้ใช้
+	    $id = $events['events'][0]['source']['userId'];   
+	    //เชื่อมต่อ mlab
+	    $strUrl = "https://api.line.me/v2/bot/message/reply";
+	    $api_key="7vVKdrk-Rg7qp8C5KFUrkQRWmAJaazgQ";
+	    $url = 'https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'';
+	    $json = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
+	    $data = json_decode($json);
+	    $isData = sizeof($data);
+	    $message = "A";
+	   
+   }
+
+   else{
+          $message = "B";
+   }
     
         switch ($message) {
             case "A":
+			
+			if (strpos($message, 'สอนบอท') !== false) {
+				 if (strpos($message, 'สอนบอท') !== false) {
+				    $x_tra = str_replace("สอนบอท","", $message);
+				    $pieces = explode("|", $x_tra);
+				    $_user=str_replace("[","",$pieces[0]);
+				    $_system=str_replace("]","",$pieces[1]);
+				     //Post New Data
+				    $newData = json_encode(
+				      array(
+					'user' => $_user,
+					'system'=> $_system
+				      )
+				    );
+				$opts = array(
+				   'http' => array(
+				   'method' => "POST",
+				   'header' => "Content-type: application/json",
+				   'content' => $newData
+			       )
+			    );
+			    $context = stream_context_create($opts);
+			    $returnValue = file_get_contents($url,false,$context); 
+			  }
+			}
+			
+			
                     $textReplyMessage = "ขอบคุณที่สอนจ้า";
                     $textMessage = new TextMessageBuilder($textReplyMessage);
                     $stickerID = 41;
@@ -110,6 +117,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $multiMessage->add($textMessage);
                     $multiMessage->add($stickerMessage);
                     $replyData = $multiMessage; 
+	            reply();
                     break;
                 case "B":
                     
@@ -122,7 +130,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                         $multiMessage = new MultiMessageBuilder;
                         $multiMessage->add($textMessage);      
                         $replyData = $multiMessage; 
-                        
+                        reply();
                        }
                     }
                     else{
@@ -156,7 +164,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $multiMessage->add($textMessage);   
                     $replyData = $multiMessage; 
                     }
-                      
+                    reply();
                        
                      
                     break;      
@@ -169,10 +177,12 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $multiMessage = new MultiMessageBuilder;
                     $multiMessage->add($textMessage);
                     $replyData = $multiMessage;   
-                    break;                                         
+                    break;      
+	            reply();
 		}
-
+function reply(){
 $response = $bot->replyMessage($replyToken,$replyData);
+}
 if ($response->isSucceeded()) {
     echo 'Succeeded!';
     return;
