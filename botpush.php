@@ -1,10 +1,7 @@
 <?php
-
 require "vendor/autoload.php";
-
 // การตั้งเกี่ยวกับ bot
 require_once 'bot_settings.php';
-
     
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient;
@@ -39,25 +36,19 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuilder;
-
     // เชื่อมต่อกับ LINE Messaging API
     $httpClient = new CurlHTTPClient(LINE_MESSAGE_ACCESS_TOKEN);
     $bot = new LINEBot($httpClient, array('channelSecret' => LINE_MESSAGE_CHANNEL_SECRET));
-
     // คำสั่งรอรับการส่งค่ามาของ LINE Messaging API
     $content = file_get_contents('php://input');
    
     // แปลงข้อความรูปแบบ JSON  ให้อยู่ในโครงสร้างตัวแปร array
     $events = json_decode($content, true);
-
     $accessToken = "Dp5cTXj8NHTYDiKoy/fQeb1zcbXljHoONSe4hCHXj1SIQ2FJCCH7qQXjnvfjxR21PWBquHunHE0HZtRL8Ezq9xf7cxTdeI/fKSKy9uNqwBIn3XicVdrptnh7SW4nD77FZeYQgrBWfpTFW9FG1EEujQdB04t89/1O/w1cDnyilFU=";//copy Channel access token ตอนที่ตั้งค่ามาใส่
-
     $arrayHeader = array();
     $arrayHeader[] = "Content-Type: application/json";
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
    
-
-
     if(!is_null($events)){
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
     $replyToken = $events['events'][0]['replyToken'];
@@ -75,7 +66,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $data = json_decode($json);
     $isData = sizeof($data);
              
-    
+    if(strpos($message, 'เริ่มทดสอบ') !== false){
            if (strpos($message, 'สอนบอท') !== false) {
                  if (strpos($message, 'สอนบอท') !== false) {
                     $x_tra = str_replace("สอนบอท","", $message);
@@ -99,15 +90,14 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
             $context = stream_context_create($opts);
             $returnValue = file_get_contents($url,false,$context);
             $message = "A";
-
           }
         }
         else{
             $message = "B";
         }
     
-            switch ($message) {
-                case "A":
+        switch ($message) {
+            case "A":
                     $textReplyMessage = "ขอบคุณที่สอนจ้า";
                     $textMessage = new TextMessageBuilder($textReplyMessage);
                     $stickerID = 41;
@@ -130,7 +120,6 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                         $multiMessage = new MultiMessageBuilder;
                         $multiMessage->add($textMessage);      
                         $replyData = $multiMessage; 
-
                         
                        }
                     }
@@ -178,8 +167,21 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $multiMessage = new MultiMessageBuilder;
                     $multiMessage->add($textMessage);
                     $replyData = $multiMessage;   
-                    break;     
-            }
+                    break;                                         
+		}
+	}
+	else if($isData >0){
+		foreach($data as $rec){
+                        
+                        $textReplyMessage = $rec->system;
+                        $textMessage = new TextMessageBuilder($textReplyMessage);   
+                           
+                        $multiMessage = new MultiMessageBuilder;
+                        $multiMessage->add($textMessage);      
+                        $replyData = $multiMessage; 
+                        
+                       }
+	}
 }
 $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
