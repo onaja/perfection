@@ -225,11 +225,11 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 	$textMessage = new TextMessageBuilder($textReplyMessage); 
 					
 	$multiMessage = new MultiMessageBuilder;
-	$multiMessage->add($textMessage);   
 	$multiMessage->add($buttonMessage);
+	$multiMessage->add($textMessage);   
 	$replyData = $multiMessage; 
             break;                                         
-		}
+	}
 $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
     echo 'Succeeded!';
