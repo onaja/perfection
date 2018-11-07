@@ -50,12 +50,12 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 
    
-    $replyToken2 = $events['events'][0]['replyToken'];
+    $replyToken = $events['events'][0]['replyToken'];
     //รับข้อความจากผู้ใช้
-    $message2 = $events['events'][0]['message']['text'];
-    $message2 = strtolower($message);
+    $message = $events['events'][0]['message']['text'];
+    $message = strtolower($message);
 
-   if(strpos($message2, 'เริ่มทำ') !== false) {
+   if(strpos($message, 'เริ่มทำ') !== false) {
 	   
 	   $replyToken = $events['events'][0]['replyToken'];
 	    //รับข้อความจากผู้ใช้
