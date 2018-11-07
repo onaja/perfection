@@ -52,8 +52,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
    
 
 
-    if(!is_null($events)){
-    // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
+ 
     $replyToken = $events['events'][0]['replyToken'];
     $typeMessage = $events['events'][0]['message']['type'];
     //รับข้อความจากผู้ใช้
@@ -172,7 +171,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $replyData = $multiMessage;   
                     break;                                         
 		}
-}
+
 $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
     echo 'Succeeded!';
