@@ -49,10 +49,6 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $arrayHeader[] = "Content-Type: application/json";
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 
-   
-
-
- 
     $replyToken = $events['events'][0]['replyToken'];
     $typeMessage = $events['events'][0]['message']['type'];
     //รับข้อความจากผู้ใช้
@@ -145,46 +141,50 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     }
 	
 	            else if($isData2 >0){
-		    	foreach($data2 as $rec2){
-                        
-			$count++;
-                        $textReplyMessage = $rec2->system;
-                        $textMessage = new TextMessageBuilder($textReplyMessage);   
-                        $textReplyMessage2 = $count;
-                        $textMessage2 = new TextMessageBuilder($textReplyMessage2); 
-				
-                        $multiMessage = new MultiMessageBuilder;
-                        $multiMessage->add($textMessage);  
-			$multiMessage->add($textMessage2);  
-                        $replyData = $multiMessage; 
-                        
-                       }
-                    }
+					if($isData2 >0){
+					foreach($data2 as $rec2){
+
+					$count++;
+					$textReplyMessage = $rec2->system;
+					$textMessage = new TextMessageBuilder($textReplyMessage);   
+					$textReplyMessage2 = $count;
+					$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
+
+					$multiMessage = new MultiMessageBuilder;
+					$multiMessage->add($textMessage);  
+					$multiMessage->add($textMessage2);  
+					$replyData = $multiMessage; 
+					}
+				       }
+					else{
+
+					 $actionBuilder = array(
+						new MessageTemplateActionBuilder(
+						    'ใช่',// ข้อความแสดงในปุ่ม
+						    'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+						),
+						new MessageTemplateActionBuilder(
+						    'ไม่',// ข้อความแสดงในปุ่ม
+						    'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+						),                   
+					    );
+
+					    $imageUrl = 'https://www.picz.in.th/images/2018/10/23/kFKkru.jpg';    
+					    $buttonMessage = new TemplateMessageBuilder('Button Template',
+						new ButtonTemplateBuilder(
+							'คำที่คุณพิมพ์หมายถึง ใช่ หรือ ไม่', // กำหนดหัวเรื่อง
+							'กรุณาเลือก 1 ข้อ', // กำหนดรายละเอียด
+							$imageUrl, // กำหนด url รุปภาพ
+							$actionBuilder  // กำหนด action object
+						)
+					    );  
+
+						}
+					    }
 	
                     else{
-                    
-                        $actionBuilder = array(
-                                new MessageTemplateActionBuilder(
-                                    'ใช่',// ข้อความแสดงในปุ่ม
-                                    'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                                ),
-                                new MessageTemplateActionBuilder(
-                                    'ไม่',// ข้อความแสดงในปุ่ม
-                                    'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                                ),                   
-                            );
-                        
-                    $imageUrl = 'https://www.picz.in.th/images/2018/10/23/kFKkru.jpg';    
-                    $buttonMessage = new TemplateMessageBuilder('Button Template',
-                        new ButtonTemplateBuilder(
-                                'คำที่คุณพิมพ์หมายถึง ใช่ หรือ ไม่', // กำหนดหัวเรื่อง
-                                'กรุณาเลือก 1 ข้อ', // กำหนดรายละเอียด
-                                $imageUrl, // กำหนด url รุปภาพ
-                                $actionBuilder  // กำหนด action object
-                        )
-                    );  
-                    
-                    $textReplyMessage = "หากคำที่คุณหมายถึงไม่ใช่ทั้ง 'ใช่' และ 'ไม่' คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
+  
+                    $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
                     $textMessage = new TextMessageBuilder($textReplyMessage); 
                         
                     $multiMessage = new MultiMessageBuilder;
