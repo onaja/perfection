@@ -69,18 +69,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $data = json_decode($json);
     $isData = sizeof($data);
              
-    if(strpos($message, 'เริ่มทดสอบ') !== false){
-	    $message = 'เลิก';
-	    while(true){	
-	    
-		    $replyToken = $events['events'][0]['replyToken'];
-		    $typeMessage = $events['events'][0]['message']['type'];
-		    //รับข้อความจากผู้ใช้
-		    $message = $events['events'][0]['message']['text'];
-		    $message = strtolower($message);
-		    //รับ id ของผู้ใช้
-		    $id = $events['events'][0]['source']['userId'];   
-	    
+
            if (strpos($message, 'สอนบอท') !== false) {
                  if (strpos($message, 'สอนบอท') !== false) {
                     $x_tra = str_replace("สอนบอท","", $message);
@@ -183,19 +172,6 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $replyData = $multiMessage;   
                     break;                                         
 		}
-		$message = 'เลิกทำ';
-		if(strpos($message, 'เลิกทำ') !== false){
-			break;
-		}
-		}
-	}
-	else{
-		$textReplyMessage = "ว่าไงนะ";
-                $textMessage = new TextMessageBuilder($textReplyMessage);
-                $multiMessage = new MultiMessageBuilder;
-                $multiMessage->add($textMessage);
-                $replyData = $multiMessage;   
-	}
 }
 $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
