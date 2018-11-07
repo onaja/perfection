@@ -49,6 +49,13 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $arrayHeader[] = "Content-Type: application/json";
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
    
+   $message2 = $events['events'][0]['message']['text'];
+
+   if(strpos($message2, 'เริ่มทดสอบ') !== false){
+	    
+	    while(true){	
+
+
     if(!is_null($events)){
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
     $replyToken = $events['events'][0]['replyToken'];
@@ -66,9 +73,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $data = json_decode($json);
     $isData = sizeof($data);
              
-    if(strpos($message, 'เริ่มทดสอบ') !== false){
-	    
-	    while(true){
+    
 	    
 	    
            if (strpos($message, 'สอนบอท') !== false) {
@@ -174,7 +179,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     break;                                         
 		}
 	
-		if(strpos($message, 'เลิกทำ') !== false){
+		if(strpos($message2, 'เลิกทำ') !== false || strpos($message, 'เลิกทำ') !== false){
 			break;
 		}
 		}
