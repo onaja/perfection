@@ -57,6 +57,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
    
 
+
     if(!is_null($events)){
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
     $replyToken = $events['events'][0]['replyToken'];
@@ -74,6 +75,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $data = json_decode($json);
     $isData = sizeof($data);
              
+    
            if (strpos($message, 'สอนบอท') !== false) {
                  if (strpos($message, 'สอนบอท') !== false) {
                     $x_tra = str_replace("สอนบอท","", $message);
@@ -103,8 +105,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
         else{
             $message = "B";
         }
-    switch ($typeMessage){
-        case 'text':
+    
             switch ($message) {
                 case "A":
                     $textReplyMessage = "ขอบคุณที่สอนจ้า";
@@ -180,11 +181,6 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     break;                                      
             }
             break;
-        default:
-            $textReplyMessage = json_encode($events);
-            $replyData = new TextMessageBuilder($textReplyMessage);         
-            break;  
-    }
 }
 $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
