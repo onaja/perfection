@@ -167,32 +167,34 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 					$multiMessage->add($textMessage2);  
 					$replyData = $multiMessage; 
 				}
-				else{
-					$actionBuilder = array(
+			}
+				
+			else{
+				$actionBuilder = array(
+				new MessageTemplateActionBuilder(
+					'ใช่',// ข้อความแสดงในปุ่ม
+					'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+					),
 					new MessageTemplateActionBuilder(
-						'ใช่',// ข้อความแสดงในปุ่ม
-						'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-						),
-						new MessageTemplateActionBuilder(
-						'ไม่',// ข้อความแสดงในปุ่ม
-						'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-						),                   
-						);
-					$imageUrl = 'https://www.picz.in.th/images/2018/10/23/kFKkru.jpg';    
-					$buttonMessage = new TemplateMessageBuilder('Button Template',
+					'ไม่',// ข้อความแสดงในปุ่ม
+					'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+					),                   
+					);
+				$imageUrl = 'https://www.picz.in.th/images/2018/10/23/kFKkru.jpg';    
+				$buttonMessage = new TemplateMessageBuilder('Button Template',
 						new ButtonTemplateBuilder(
-							'คำที่คุณพิมพ์หมายถึง ใช่ หรือ ไม่', // กำหนดหัวเรื่อง
-							'กรุณาเลือก 1 ข้อ', // กำหนดรายละเอียด
-							$imageUrl, // กำหนด url รุปภาพ
-							$actionBuilder  // กำหนด action object
-						)
-						);  
+						'คำที่คุณพิมพ์หมายถึง ใช่ หรือ ไม่', // กำหนดหัวเรื่อง
+						'กรุณาเลือก 1 ข้อ', // กำหนดรายละเอียด
+						$imageUrl, // กำหนด url รุปภาพ
+						$actionBuilder  // กำหนด action object
+					)
+					);  
 							
-					$multiMessage = new MultiMessageBuilder;
-					$multiMessage->add($buttonMessage);
-					$replyData = $multiMessage; 
-						}
-					}
+				$multiMessage = new MultiMessageBuilder;
+				$multiMessage->add($buttonMessage);
+				$replyData = $multiMessage; 
+				}
+			}
 		    break;
 		case "D":
 					$textReplyMessage = "คุณคิดว่า คุณสามารถทำให้ดีกว่านี้ได้";
