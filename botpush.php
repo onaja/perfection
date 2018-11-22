@@ -202,14 +202,22 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
         default:
                     
             $actionBuilder = array(
-                        new MessageTemplateActionBuilder(
-						'ใช่',// ข้อความแสดงในปุ่ม
-						'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-						),
-						new MessageTemplateActionBuilder(
-						'ไม่',// ข้อความแสดงในปุ่ม
-						'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-						),                   
+                        new PostbackTemplateActionBuilder(
+                                'Postback', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+                                    'action'=>'buy',
+                                    'item'=>100
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                              'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),     
+						new PostbackTemplateActionBuilder(
+                                'Postback', // ข้อความแสดงในปุ่ม
+                                http_build_query(array(
+                                    'action'=>'buy',
+                                    'item'=>100
+                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                              'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),           
 						);
                         
                     $imageUrl = 'https://www.picz.in.th/images/2018/10/23/kFKkru.jpg';    
