@@ -204,10 +204,13 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
             $actionBuilder = array(
                         new PostbackTemplateActionBuilder(
                                 'ใช่', // ข้อความแสดงในปุ่ม     
-				http_build_query(array(
+				$newData = http_build_query(array(
                                     'user'=> $message,
                                     'system'=> 'ใช่'
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                ))
+				$connection = new Mongoclient();
+				$collection = $connection->rup_db->answer;
+				$collection->insert($newData);, // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
 				
 				$message// ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),     
