@@ -203,14 +203,14 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     
             $actionBuilder = array(
                         new PostbackTemplateActionBuilder(
-                                'Postback', // ข้อความแสดงในปุ่ม
+                                'ใช่', // ข้อความแสดงในปุ่ม
                                 
-                              'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                              'ใช่'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),     
-						new PostbackTemplateActionBuilder(
-                                'Postback', // ข้อความแสดงในปุ่ม
+			new PostbackTemplateActionBuilder(
+                                'ไม่', // ข้อความแสดงในปุ่ม
                                 
-                              'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                              'ไม่'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),           
 						);
                         
