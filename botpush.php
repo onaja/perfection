@@ -202,9 +202,27 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
         default:
                     
             $actionBuilder = array(
-                                new MessageTemplateActionBuilder(
+                                new PostbackTemplateActionBuilder(
                                     'ใช่',// ข้อความแสดงในปุ่ม
-                                    'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                    http_build_query(array(
+					$newData = json_encode(
+					  array(
+					'user' => $message,
+					'system'=> 'ใช่'
+					  )
+					);
+					$opts = array(
+					   'http' => array(
+					   'method' => "POST",
+					   'header' => "Content-type: application/json",
+					   'content' => $newData
+					   )
+					   );
+					$context = stream_context_create($opts);
+					$returnValue = file_get_contents($url,false,$context);
+				   
+				    )),
+				    'ใช่...' // แสดงข้อความฝั่งผู้ใช้เมื่อคลืก
                                 ),
                                 new MessageTemplateActionBuilder(
                                     'ไม่',// ข้อความแสดงในปุ่ม
