@@ -202,34 +202,15 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
         default:
                     
             $actionBuilder = array(
-                        new PostbackTemplateActionBuilder(
-            			'ใช่', // ข้อความแสดงในปุ่ม
-           			 $newData = json_encode(
-					  array(
-					'user' => $_user,
-					'system'=> $_system
-					  )
-					);
-				$opts = array(
-				   'http' => array(
-				   'method' => "POST",
-				   'header' => "Content-type: application/json",
-				   'content' => $newData
-				   )
-				   );
-					$context = stream_context_create($opts);
-					$returnValue = file_get_contents($url,false,$context);//ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-            			
-        		),  
-		        new PostbackTemplateActionBuilder(
-            			'ไม่', // ข้อความแสดงในปุ่ม
-           			 http_build_query(array(
-                		'user'=> $message,
-                		'system'=> 'ไม่'
-            			)), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-            			'Postback '  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-        		),
-    		);	
+                        new MessageTemplateActionBuilder(
+						'ใช่',// ข้อความแสดงในปุ่ม
+						'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+						),
+						new MessageTemplateActionBuilder(
+						'ไม่',// ข้อความแสดงในปุ่ม
+						'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+						),                   
+						);
                         
                     $imageUrl = 'https://www.picz.in.th/images/2018/10/23/kFKkru.jpg';    
                     $buttonMessage = new TemplateMessageBuilder('Button Template',
