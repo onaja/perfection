@@ -73,8 +73,11 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     
 	$count = 0;
 	
-        if (strpos($message, 'สอนบอท' !== false || strpos($message, 'สอนคำตอบ') !== false) {
+        if (strpos($message, 'สอนบอท' !== false ){
             $message = "A";
+        }
+	else if (strpos($message, 'คำตอบ' !== false ){
+            $message = "E";
         }
         else if($isData > 0){
             $message = "B";
@@ -113,8 +116,22 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				   
 				  }
 				}
+			
+                    $textReplyMessage = "ขอบคุณที่สอนจ้า";
+                    $textMessage = new TextMessageBuilder($textReplyMessage);
+                    $stickerID = 41;
+                    $packageID = 2;
+                    $stickerMessage = new StickerMessageBuilder($packageID,$stickerID);
+                    
+                    $multiMessage = new MultiMessageBuilder;
+                    $multiMessage->add($textMessage);
+                    $multiMessage->add($stickerMessage);
+                    $replyData = $multiMessage; 
+            break;
+	
 		
-		               else if (strpos($message, 'สอนคำตอบ') !== false) {
+		case "E":
+		if (strpos($message, 'สอนคำตอบ') !== false) {
 				 if (strpos($message, 'สอนคำตอบ') !== false) {
 					$x_tra = str_replace("สอนคำตอบ","", $message);
 					$pieces = explode(",", $x_tra);
@@ -135,7 +152,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				   )
 				   );
 					$context = stream_context_create($opts);
-					$returnValue = file_get_contents($url2,false,$context);
+					$returnValue = file_get_contents($url,false,$context);
 				   
 				  }
 				}
@@ -150,8 +167,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $multiMessage->add($textMessage);
                     $multiMessage->add($stickerMessage);
                     $replyData = $multiMessage; 
-            break;
-					
+		break;
             case "B":
                 if($isData >0){
                     foreach($data as $rec){
