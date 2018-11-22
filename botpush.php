@@ -201,19 +201,33 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 		   break;
         default:
                     
-            $textReplyMessage = "คุณสามารถสอนบอทได้ 2 วิธี 1 สอนคำตอบว่า ใช่ หรือ ไม่ 2 สอนพูดคุยทั่วไป";
-		    $textMessage = new TextMessageBuilder($textReplyMessage); 
-			
-                    $textReplyMessage2 = "วิธีที่ 1 คุณสามารถสอนได้ด้วยการพิมพ์ : สอนคำตอบ(คำที่คุณต้องการสอน,ใช่ หรือ ไม่)";
-		    $textMessage2 = new TextMessageBuilder($textReplyMessage2); 
-			
-                    $textReplyMessage3 = "วิธีที่ 2 คุณสามารถสอนได้ด้วยการพิมพ์ : สอนบอท[คำถาม|คำตอบ]";
-                    $textMessage3 = new TextMessageBuilder($textReplyMessage3); 
-			
+            $actionBuilder = array(
+                                new MessageTemplateActionBuilder(
+                                    'ใช่',// ข้อความแสดงในปุ่ม
+                                    'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                ),
+                                new MessageTemplateActionBuilder(
+                                    'ไม่',// ข้อความแสดงในปุ่ม
+                                    'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                ),                   
+                            );
+                        
+                    $imageUrl = 'https://www.picz.in.th/images/2018/10/23/kFKkru.jpg';    
+                    $buttonMessage = new TemplateMessageBuilder('Button Template',
+                        new ButtonTemplateBuilder(
+                                'คำที่คุณพิมพ์หมายถึง ใช่ หรือ ไม่', // กำหนดหัวเรื่อง
+                                'กรุณาเลือก 1 ข้อ', // กำหนดรายละเอียด
+                                $imageUrl, // กำหนด url รุปภาพ
+                                $actionBuilder  // กำหนด action object
+                        )
+                    );  
+                    
+                    $textReplyMessage = "หากสิ่งที่คุณหมายถึงไม่ใช่ทั้ง 'ใช่' และ 'ไม่' คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
+                    $textMessage = new TextMessageBuilder($textReplyMessage); 
+                        
                     $multiMessage = new MultiMessageBuilder;
-		    $multiMessage->add($textMessage); 
-                    $multiMessage->add($textMessage2);   
-		    $multiMessage->add($textMessage3); 
+                    $multiMessage->add($buttonMessage);
+                    $multiMessage->add($textMessage);   
                     $replyData = $multiMessage; 
             break;                                         
 	}
