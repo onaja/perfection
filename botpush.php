@@ -218,8 +218,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				   )
 				   );
 					$context = stream_context_create($opts);
-					$returnValue = file_get_contents($url,false,$context);,
-                              'ใช่'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+					$returnValue = file_get_contents($url,false,$context);
                             ),     
 			new PostbackTemplateActionBuilder(
                                 'ไม่', // ข้อความแสดงในปุ่ม
