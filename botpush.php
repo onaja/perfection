@@ -204,13 +204,10 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
             $actionBuilder = array(
                         new PostbackTemplateActionBuilder(
                                 'ใช่', // ข้อความแสดงในปุ่ม     
-				$newData = http_build_query(array(
+				http_build_query(array(
                                     'user'=> $message,
                                     'system'=> 'ใช่'
-                                ))
-				$connection = new Mongoclient();
-				$collection = $connection->rup_db->answer;
-				$collection->insert($newData);, // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
+                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
 				
 				$message// ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),     
@@ -226,6 +223,29 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                         )
                     );  
                     
+		    
+			$newData = json_encode(
+					  array(
+					'user' => $message,
+					'system'=> 'ใช่'
+					  )
+					);
+				$opts = array(
+				   'http' => array(
+				   'method' => "POST",
+				   'header' => "Content-type: application/json",
+				   'content' => $newData
+				   )
+				   );
+					$context = stream_context_create($opts);
+					$returnValue = file_get_contents($url,false,$context);
+			
+			
+			
+			
+			
+			
+			
                     $textReplyMessage = "หากสิ่งที่คุณหมายถึงไม่ใช่ทั้ง 'ใช่' และ 'ไม่' คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
                     $textMessage = new TextMessageBuilder($textReplyMessage); 
                         
