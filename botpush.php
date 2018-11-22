@@ -200,13 +200,13 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                 $replyData = $multiMessage; 
 		   break;
         default:
-		    $textReplyMessage = "คุณสามารถสอนบอทได้ 2 วิธี 1 สอนคำตอบว่า ใช่ หรือ ไม่ 2 สอนพูดคุยทั่วไป";
+		    $textReplyMessage = "คุณสามารถสอนบอทได้ 2 วิธี"+\n+" 1 สอนคำตอบว่า ใช่ หรือ ไม่"+\n+" 2 สอนพูดคุยทั่วไป";
 		    $textMessage = new TextMessageBuilder($textReplyMessage); 
 			
-                    $textReplyMessage2 = "คุณสามารถสอนได้ด้วยการพิมพ์ : สอนคำตอบ(คำที่คุณต้องการสอน,ใช่ หรือ ไม่)";
+                    $textReplyMessage2 = "วิธีที่ 1 คุณสามารถสอนได้ด้วยการพิมพ์ : "+\n+"สอนคำตอบ(คำที่คุณต้องการสอน,ใช่ หรือ ไม่)";
 		    $textMessage2 = new TextMessageBuilder($textReplyMessage2); 
 			
-                    $textReplyMessage3 = "คุณสามารถสอนได้ด้วยการพิมพ์ : สอนบอท[คำถาม|คำตอบ]";
+                    $textReplyMessage3 = "วิธีที่ 2 คุณสามารถสอนได้ด้วยการพิมพ์ : "+\n+"สอนบอท[คำถาม|คำตอบ]";
                     $textMessage3 = new TextMessageBuilder($textReplyMessage3); 
 			
 		   
