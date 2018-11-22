@@ -73,10 +73,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     
 	$count = 0;
 	
-        if (strpos($message, 'สอนบอท' !== false ){
+        if (strpos($message, 'สอนบอท') !== false) {
             $message = "A";
         }
-	
         else if($isData > 0){
             $message = "B";
         }
@@ -126,7 +125,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $multiMessage->add($stickerMessage);
                     $replyData = $multiMessage; 
             break;
-	
+					
             case "B":
                 if($isData >0){
                     foreach($data as $rec){
@@ -201,7 +200,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                 $replyData = $multiMessage; 
 		   break;
         default:
-		    $textReplyMessage = "คุณสามารถสอนบอทได้ 2 วิธี 1 สอนคำตอบว่า ใช่ หรือ ไม่ 2 สอนพูดคุยทั่วไป";
+                    
+            $textReplyMessage = "คุณสามารถสอนบอทได้ 2 วิธี 1 สอนคำตอบว่า ใช่ หรือ ไม่ 2 สอนพูดคุยทั่วไป";
 		    $textMessage = new TextMessageBuilder($textReplyMessage); 
 			
                     $textReplyMessage2 = "วิธีที่ 1 คุณสามารถสอนได้ด้วยการพิมพ์ : สอนคำตอบ(คำที่คุณต้องการสอน,ใช่ หรือ ไม่)";
@@ -216,7 +216,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 		    $multiMessage->add($textMessage3); 
                     $replyData = $multiMessage; 
             break;                                         
-}
+	}
 $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
     echo 'Succeeded!';
