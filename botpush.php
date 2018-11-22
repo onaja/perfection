@@ -200,33 +200,51 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                 $replyData = $multiMessage; 
 		   break;
         default:
-                    
-            $actionBuilder = array(
-                        new MessageTemplateActionBuilder(
-						'ใช่',// ข้อความแสดงในปุ่ม
-						$message // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-						),
-						new MessageTemplateActionBuilder(
-						'ไม่',// ข้อความแสดงในปุ่ม
-						'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-						),                   
-						);
-                        
-                    $imageUrl = 'https://www.picz.in.th/images/2018/10/23/kFKkru.jpg';    
-                    $buttonMessage = new TemplateMessageBuilder('Button Template',
-                        new ButtonTemplateBuilder(
-                                'คำที่คุณพิมพ์หมายถึง ใช่ หรือ ไม่', // กำหนดหัวเรื่อง
-                                'กรุณาเลือก 1 ข้อ', // กำหนดรายละเอียด
-                                $imageUrl, // กำหนด url รุปภาพ
-                                $actionBuilder  // กำหนด action object
-                        )
-                    );  
-                    
-		    
-			$newData = json_encode(
+		    $$textReplyMessage2 = "คุณสามารถสอนบอทได้ 2 วิธี"+\n+"1 สอนคำตอบว่า ใช่ หรือ ไม่"+\n+"2 สอนพูดคุยทั่วไป";
+		    $textMessage2 = new TextMessageBuilder($textReplyMessage2); 
+			
+                    $$textReplyMessage2 = "คุณสามารถสอนได้ด้วยการพิมพ์ : สอนคำตอบ(คำที่คุณต้องการสอน,ใช่ หรือ ไม่)";
+		    $textMessage2 = new TextMessageBuilder($textReplyMessage2); 
+			
+                    $textReplyMessage3 = "คุณสามารถสอนได้ด้วยการพิมพ์ : สอนบอท[คำถาม|คำตอบ]";
+                    $textMessage3 = new TextMessageBuilder($textReplyMessage3); 
+			
+		   if (strpos($message, 'สอนคำตอบ') !== false) {
+				 if (strpos($message, 'สอนคำตอบ') !== false) {
+					$x_tra = str_replace("สอนคำตอบ","", $message);
+					$pieces = explode(",", $x_tra);
+					$_user=str_replace("(","",$pieces[0]);
+					$_system=str_replace(")","",$pieces[1]);
+					 //Post New Data
+					$newData = json_encode(
 					  array(
-					'user' => $message,
-					'system'=> 'ใช่'
+					'user' => $user,
+					'system'=> $_system
+					  )
+					);
+				$opts = array(
+				   'http' => array(
+				   'method' => "POST",
+				   'header' => "Content-type: application/json",
+				   'content' => $newData
+				   )
+				   );
+					$context = stream_context_create($opts);
+					$returnValue = file_get_contents($url2,false,$context);
+				   
+				  }
+				}
+		   else if (strpos($message, 'สอนบอท') !== false) {
+				 if (strpos($message, 'สอนบอท') !== false) {
+					$x_tra = str_replace("สอนบอท","", $message);
+					$pieces = explode("|", $x_tra);
+					$_user=str_replace("[","",$pieces[0]);
+					$_system=str_replace("]","",$pieces[1]);
+					 //Post New Data
+					$newData = json_encode(
+					  array(
+					'user' => $_user,
+					'system'=> $_system
 					  )
 					);
 				$opts = array(
@@ -238,19 +256,14 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				   );
 					$context = stream_context_create($opts);
 					$returnValue = file_get_contents($url,false,$context);
-			
-			
-			
-			
-			
-			
-			
-                    $textReplyMessage = "หากสิ่งที่คุณหมายถึงไม่ใช่ทั้ง 'ใช่' และ 'ไม่' คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
-                    $textMessage = new TextMessageBuilder($textReplyMessage); 
+				   
+				  }
+				}
                         
                     $multiMessage = new MultiMessageBuilder;
-                    $multiMessage->add($buttonMessage);
-                    $multiMessage->add($textMessage);   
+		    $multiMessage->add($textMessage); 
+                    $multiMessage->add($textMessage2);   
+		    $multiMessage->add($textMessage3); 
                     $replyData = $multiMessage; 
             break;                                         
 	}
