@@ -208,7 +208,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                                     'user'=> $message,
                                     'system'=> 'ใช่'
                                 )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-				'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+				
+				$message// ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),     
 			);
                         
