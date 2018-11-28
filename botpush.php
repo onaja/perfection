@@ -103,7 +103,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 		       		   )
 		    	   );
 		    $context = stream_context_create($opts);
-		    $returnValue = json_decode(file_get_contents($url,false,$context));
+		    $returnValue = (file_get_contents($url,false,$context);
 
 				  }
 				}
