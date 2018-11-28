@@ -88,8 +88,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
         switch ($message) {
             case "A":
 			
-				if (strpos($_msg, 'สอนบอท') !== false) {
-				  if (strpos($_msg, 'สอนบอท') !== false) {
+				if (strpos($message, 'สอนบอท') !== false) {
+				  if (strpos($message, 'สอนบอท') !== false) {
 				    $x_tra = str_replace("สอนบอท","", $message);
 				    $pieces = explode("|", $x_tra);
 				    $_user=str_replace("[","",$pieces[0]);
