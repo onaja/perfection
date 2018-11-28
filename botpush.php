@@ -94,11 +94,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			    $_user=str_replace("[","",$pieces[0]);
 			    $_system=str_replace("]","",$pieces[1]);
 			     //Post New Data
-			    $newData = json_encode(
-			      array(
+			    $newData = array(
 				'user' => $_user,
-				'system'=> $_system
-			      )
+				'system'=> $_system  
 			    );
 			$opts = array(
 			   'http' => array(
