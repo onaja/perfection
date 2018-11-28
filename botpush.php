@@ -196,7 +196,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 	        $textReplyMessage = "คุณคิดว่า คุณสามารถทำให้ดีกว่านี้ได้";
                 $textMessage = new TextMessageBuilder($textReplyMessage); 
 				
-		$textReplyMessage2 = $count.$count;
+		$textReplyMessage2 = $textReplyMessage2.$count;
                 $textMessage2 = new TextMessageBuilder($textReplyMessage2); 
 				
 				
@@ -246,6 +246,7 @@ if ($response->isSucceeded()) {
 }
 // Failed
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+echo phpinfo();
  /*
     if (strpos($message, 'สอนบอท') !== false) {
          if (strpos($message, 'สอนบอท') !== false) {
