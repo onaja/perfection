@@ -193,7 +193,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 		    break;
 			case "D":
-			while(true){
+			while($count<=5){
 		$textReplyMessage = "คุณคิดว่า คุณสามารถทำให้ดีกว่านี้ได้";
                 $textMessage = new TextMessageBuilder($textReplyMessage); 
 				
@@ -205,9 +205,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 		$multiMessage->add($textMessage2);
                 $replyData = $multiMessage; 
 				
-				if ($count >= 5){
-					break;
-				}
+				
 			}
 		   break;
         default:
