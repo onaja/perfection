@@ -198,9 +198,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                 $multiMessage = new MultiMessageBuilder;
                 $multiMessage->add($textMessage);   
                 $replyData = $multiMessage; 
-				$count++;
-				if($count>=5){
-					break;
+				
 			}
 		   break;
         default:
