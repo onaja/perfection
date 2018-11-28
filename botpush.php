@@ -94,12 +94,21 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			    $_user=str_replace("[","",$pieces[0]);
 			    $_system=str_replace("]","",$pieces[1]);
 			     //Post New Data
-			   $newData = $_POST(
+			   $newData = json_encode(
 				      array(
 					'user' => $_user,
 					'system'=> $_system
 				      )
 				    );
+				$opts = array(
+				   'http' => array(
+				   'method' => "POST",
+				   'header' => "Content-type: application/json",
+				   'content' => $newData
+			       )
+			    );
+			    $context = stream_context_create($opts);
+			    $returnValue = file_get_contents($url,false,$context);
 
 				  }
 				}
