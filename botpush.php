@@ -246,7 +246,6 @@ if ($response->isSucceeded()) {
 }
 // Failed
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-echo phpinfo();
  /*
     if (strpos($message, 'สอนบอท') !== false) {
          if (strpos($message, 'สอนบอท') !== false) {
