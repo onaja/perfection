@@ -203,7 +203,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                 $multiMessage = new MultiMessageBuilder;
                 $multiMessage->add($textMessage);   
 		$multiMessage->add($textMessage2);  
-                $replyData = $replyData.$multiMessage; 
+                $replyData = $replyData.$multimessage; 
 				
 			}
 		   break;
