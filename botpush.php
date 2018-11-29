@@ -215,7 +215,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			}
 			
 		   break;
-		case "z":
+		case "Z":
 			if(strpos($message, 'ฟหกด') !== false){
 		       for($i=1;$i<=10;$i++){
 			  $textReplyMessage = $i;
