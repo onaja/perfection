@@ -199,17 +199,25 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 		    break;
 			case "D":
-			for($count = 0 ; $count <5 ; $count++){
+			for($count = 0 ; $count <15 ; $count++){
 	        $textReplyMessage = "คุณคิดว่า คุณสามารถทำให้ดีกว่านี้ได้";
                 $textMessage = new TextMessageBuilder($textReplyMessage); 
 				
-		$textReplyMessage2 = $textReplyMessage2.$count;
-                $textMessage2 = new TextMessageBuilder($textReplyMessage2); 
+		 
 				
+		$message = $events['events'][0]['message']['text'];
+    		$message = strtolower($message);		
+				
+		$textReplyMessage2 = $count;
+                $textMessage2 = new TextMessageBuilder($textReplyMessage2);		
+				
+		$textReplyMessage3 = $message;
+                $textMessage3 = new TextMessageBuilder($textReplyMessage3);
 				
                 $multiMessage = new MultiMessageBuilder;
                 $multiMessage->add($textMessage);   
 		$multiMessage->add($textMessage2);  
+		$multiMessage->add($textMessage3);
                 $replyData = $multiMessage; 
 		$response = $bot->pushMessage($id,$replyData);
 			}
