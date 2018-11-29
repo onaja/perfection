@@ -207,9 +207,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                 $multiMessage->add($textMessage);   
 		$multiMessage->add($textMessage2);  
                 $replyData = $multiMessage; 
-				
+		$response = $bot->replyMessage($replyToken,$replyData);
 			}
-			$response = $bot->replyMessage($replyToken,$replyData);
+			
 		   break;
         default:
                     
