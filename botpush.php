@@ -216,14 +216,12 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 		   break;
 		case "Z":
-			if(strpos($message, 'ฟหกด') !== false){
+			if($message == "ฟหกด"){
 		       for($i=1;$i<=10;$i++){
-			  $textReplyMessage = $i;
-			  $textMessage = new TextMessageBuilder($textReplyMessage); 
-			       $multiMessage = new MultiMessageBuilder;
-			       $multiMessage->add($textMessage); 
-			       $replyData = $multiMessage; 
-		$response = $bot->replyMessage($replyToken,$replyData);
+			  $arrayPostData['to'] = $id;
+			  $arrayPostData['messages'][0]['type'] = "text";
+			  $arrayPostData['messages'][0]['text'] = $i;
+			  pushMsg($arrayHeader,$arrayPostData);
 		       }
 		    }
 			
@@ -327,18 +325,18 @@ echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
   }
 }
     */
-function replyMsg($arrayHeader,$arrayPostData){
-        $strUrl = "https://api.line.me/v2/bot/message/reply";
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$strUrl);
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);    
-        curl_setopt($ch, CURLOPT_POSTFIELDS,json_encode($arrayPostData));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        $result = curl_exec($ch);
-        curl_close ($ch);
-    }
+function pushMsg($arrayHeader,$arrayPostData){
+      $strUrl = "https://api.line.me/v2/bot/message/push";
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL,$strUrl);
+      curl_setopt($ch, CURLOPT_HEADER, false);
+      curl_setopt($ch, CURLOPT_POST, true);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrayPostData));
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+      $result = curl_exec($ch);
+      curl_close ($ch);
+   }
    exit;
 ?>
