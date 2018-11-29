@@ -219,7 +219,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			for($count = 0 ; $count <5 ; $count++){
 				$textReplyMessage = "test".$count;
                 		$replyData = new TextMessageBuilder($textReplyMessage); 
-				$response = $bot->replyMessage($replyToken,$replyData);
+				$response = $bot->pushMessage($id,$replyData);
 			}
 			
 			break;
