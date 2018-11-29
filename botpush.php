@@ -211,7 +211,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 		$textReplyMessage2 = $count;
                 $textMessage2 = new TextMessageBuilder($textReplyMessage2);		
 				
-		$textReplyMessage3 = $message;
+		$textReplyMessage3 = $message2;
                 $textMessage3 = new TextMessageBuilder($textReplyMessage3);
 				
 	       				
