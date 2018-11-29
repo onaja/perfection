@@ -204,7 +204,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                 $textMessage = new TextMessageBuilder($textReplyMessage); 
 				
 		 	
-		$message2 = $events['events'][0]['message']['text'];
+		$message2 = "ฟหกด";
 		
     			
 				
