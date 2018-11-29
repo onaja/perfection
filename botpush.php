@@ -123,6 +123,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $multiMessage->add($textMessage);
                     $multiMessage->add($stickerMessage);
                     $replyData = $multiMessage; 
+		$response = $bot->replyMessage($replyToken,$replyData);
             break;
 					
             case "B":
@@ -146,6 +147,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 					$multiMessage->add($textMessage);   
 					$replyData = $multiMessage; 
 				}
+			$response = $bot->replyMessage($replyToken,$replyData);
 						  
 		    break;      
 			case "C":
@@ -189,6 +191,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 					$multiMessage->add($buttonMessage);
 					$replyData = $multiMessage; 
 				}
+			$response = $bot->replyMessage($replyToken,$replyData);
 			
 		    break;
 			case "D":
@@ -206,6 +209,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                 $replyData = $multiMessage; 
 				
 			}
+			$response = $bot->replyMessage($replyToken,$replyData);
 		   break;
         default:
                     
@@ -237,9 +241,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $multiMessage->add($buttonMessage);
                     $multiMessage->add($textMessage);   
                     $replyData = $multiMessage; 
+		   $response = $bot->replyMessage($replyToken,$replyData);
             break;                                         
 	}
-$response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
     echo 'Succeeded!';
     return;
