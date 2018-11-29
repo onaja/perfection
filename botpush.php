@@ -203,10 +203,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 	        $textReplyMessage = "คุณคิดว่า คุณสามารถทำให้ดีกว่านี้ได้";
                 $textMessage = new TextMessageBuilder($textReplyMessage); 
 				
-		 
-				
-		$message = $events['events'][0]['message']['text'];
+		 	
 		$message2 = $events['events'][0]['message']['text'];
+		
     			
 				
 		$textReplyMessage2 = $count;
@@ -215,14 +214,11 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 		$textReplyMessage3 = $message;
                 $textMessage3 = new TextMessageBuilder($textReplyMessage3);
 				
-	        $textReplyMessage4 = $message2;
-                $textMessage4 = new TextMessageBuilder($textReplyMessage4);
-				
+	       				
                 $multiMessage = new MultiMessageBuilder;
                 $multiMessage->add($textMessage);   
 		$multiMessage->add($textMessage2);  
 		$multiMessage->add($textMessage3);
-		$multiMessage->add($textMessage4);
                 $replyData = $multiMessage; 
 		$response = $bot->pushMessage($id,$replyData);
 			}
