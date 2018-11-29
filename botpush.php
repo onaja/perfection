@@ -216,14 +216,11 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 		   break;
 		case "Z":
-			if($message == "ฟหกด"){
-		       for($i=1;$i<=10;$i++){
-			  $arrayPostData['to'] = $id;
-			  $arrayPostData['messages'][0]['type'] = "text";
-			  $arrayPostData['messages'][0]['text'] = $i;
-			  pushMsg($arrayHeader,$arrayPostData);
-		       }
-		    }
+			for($count = 0 ; $count <5 ; $count++){
+				$textReplyMessage = $textReplyMessage.$count;
+                		$replyData = new TextMessageBuilder($textReplyMessage); 
+				$response = $bot->replyMessage($replyToken,$replyData);
+			}
 			
 			break;
         default:
