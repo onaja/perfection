@@ -85,6 +85,10 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
    	 else if(strpos($message, 'เริ่มทดสอบ') !== false){
 	    $message = "D";
 	}
+	else if(strpos($message, '..') !== false){
+	    $message = "Z";
+	}
+
         switch ($message) {
             case "A":
 			if (strpos($message, 'สอนบอท') !== false) {
@@ -211,6 +215,19 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			}
 			
 		   break;
+		case "z":
+			if($message == "นับ 1-10"){
+		       for($i=1;$i<=10;$i++){
+			  $textReplyMessage = $i;
+			  $textMessage = new TextMessageBuilder($textReplyMessage); 
+			       $multiMessage = new MultiMessageBuilder;
+			       $multiMessage->add($textMessage); 
+			       $replyData = $multiMessage; 
+		$response = $bot->replyMessage($replyToken,$replyData);
+		       }
+		    }
+			
+			break;
         default:
                     
             $actionBuilder = array(
