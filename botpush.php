@@ -203,8 +203,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 	        $textReplyMessage = "คุณคิดว่า คุณสามารถทำให้ดีกว่านี้ได้";
                 $textMessage = new TextMessageBuilder($textReplyMessage); 
 				
-		$events = json_decode($content, true);
-		$message2 = $events['events'][0]['message']['text'];
+		$message2 = $events['events'][$count]['message']['text'];
 		
     			
 				
