@@ -85,7 +85,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
    	 else if(strpos($message, 'เริ่มทดสอบ') !== false){
 	    $message = "D";
 	}
-	else if(strpos($message, '..') !== false){
+	else if(strpos($message, 'ฟหกด') !== false){
 	    $message = "Z";
 	}
 
@@ -216,7 +216,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 		   break;
 		case "z":
-			if($message == ".."){
+			if(strpos($message, 'ฟหกด') !== false){
 		       for($i=1;$i<=10;$i++){
 			  $textReplyMessage = $i;
 			  $textMessage = new TextMessageBuilder($textReplyMessage); 
