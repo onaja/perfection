@@ -217,7 +217,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 		   break;
 		case "Z":
 			for($count = 0 ; $count <5 ; $count++){
-				$textReplyMessage = $textReplyMessage.$count;
+				$textReplyMessage = "test".$count;
                 		$replyData = new TextMessageBuilder($textReplyMessage); 
 				$response = $bot->replyMessage($replyToken,$replyData);
 			}
