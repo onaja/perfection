@@ -56,7 +56,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     //รับ id ของผู้ใช้
     $id = $events['events'][0]['source']['userId'];   
     
-    $strUrl = "https://api.line.me/v2/bot/message/reply";
+    $strUrl = "https://api.line.me/v2/bot/message/push";
     //เชื่อมต่อ mlab
     $api_key="7vVKdrk-Rg7qp8C5KFUrkQRWmAJaazgQ";
 	
