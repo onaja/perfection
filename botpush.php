@@ -216,7 +216,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 		   break;
 		case "z":
-			if($message == "นับ 1-10"){
+			if($message == ".."){
 		       for($i=1;$i<=10;$i++){
 			  $textReplyMessage = $i;
 			  $textMessage = new TextMessageBuilder($textReplyMessage); 
