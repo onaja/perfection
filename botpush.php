@@ -199,6 +199,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 		    break;
 			case "D":
+			
 			$textReplyMessage = $message;
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 				
@@ -261,32 +262,6 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			}
 				$response = $bot->pushMessage($id,$replyData);
 			}
-			
-			
-			
-			/*
-			if(isset($_SESSION['views'])) {
-				$_SESSION['views']= $_SESSION['views'] + 1;//
-			} else {	
-				$_SESSION['views']=2;
-			}
-			
-			
-			//if(isset($_COOKIE[$cookie_name])) {
-			//    $_COOKIE[$cookie_name]++;
-			//} else {
-			//    $_COOKIE[$cookie_name] = 0;
-			//}
-
-			//$textReplyMessage = $_SESSION['views'];
-			$textReplyMessage = $_COOKIE[$cookie_name]." Hello"; 
-			$textMessage = new TextMessageBuilder($textReplyMessage);
-			
-			$multiMessage = new MultiMessageBuilder;
-			$multiMessage->add($textMessage); 
-			$replyData = $multiMessage;
-			$response = $bot->replyMessage($replyToken,$replyData);
-			*/
 			
 	       			
 			
