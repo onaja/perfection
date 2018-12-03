@@ -209,7 +209,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$replyData = $multiMessage;
 			$response = $bot->replyMessage($replyToken,$replyData);
 			}
-			}
+			
 			
 			if($count == 2){
 			$textReplyMessage = " Hell";
@@ -220,7 +220,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$replyData = $multiMessage;
 			$response = $bot->replyMessage($replyToken,$replyData);
 			}
-			}
+			
 
 			if($count == 3){
 			$textReplyMessage = "123";
