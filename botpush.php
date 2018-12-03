@@ -199,12 +199,11 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			
 			session_start();
+			$count = 0;
+			session_register("count");
 			
-			$_SESSION["$count"] = 0;
-			$count = 1;
-			$_SESSION["1"] = $_SESSION["$count"] + $count;
 				
-			$textReplyMessage = $_SESSION["1"];
+			$textReplyMessage = $count+1;
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 			
 			$multiMessage = new MultiMessageBuilder;
