@@ -224,7 +224,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			//}
 
 			//$textReplyMessage = $_SESSION['views'];
-			$textReplyMessage = $_COOKIE[$cookie_name] + " Hello"; 
+			$textReplyMessage = " Hello"; 
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 			
 			$multiMessage = new MultiMessageBuilder;
