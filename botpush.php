@@ -203,7 +203,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			session_register("$count");
 			
 				
-			$textReplyMessage = $count;
+			$textReplyMessage = $_SESSION["count"];
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 			
 			$multiMessage = new MultiMessageBuilder;
