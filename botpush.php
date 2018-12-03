@@ -200,8 +200,15 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			session_start();
 			
-			$_SESSION['count2'] = $_SESSION['count2'] + 1;
-			$textReplyMessage = $_SESSION['count2'];
+			
+			if(isset($_SESSION['views']))
+			$_SESSION['views']=$_SESSION['views']+1;
+			else
+			$_SESSION['views']=1;
+		
+
+
+			$textReplyMessage = $_SESSION['views'];
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 			
 			$multiMessage = new MultiMessageBuilder;
