@@ -71,7 +71,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $data2 = json_decode($json2);
     $isData2 = sizeof($data2);
     
-	$count = 0;
+	$count = 1;
 	
         if (strpos($message, 'สอนบอท') !== false) {
             $message = "A";
@@ -200,7 +200,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			session_start();
 			$_SESSION['1']="คุณจะคิดว่าคุณน่าจะทำได้ดีกว่านี้";
-			$_SESSION['2']= $count;
+			$_SESSION['2']= $_SESSION['2']+$count;
 				
 			$textReplyMessage = $_SESSION['2'];
 			$textMessage = new TextMessageBuilder($textReplyMessage);
