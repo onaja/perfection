@@ -209,7 +209,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$multiMessage = new MultiMessageBuilder;
 			$multiMessage->add($textMessage); 
 			$replyData = $multiMessage;
-			$response = $bot->pushMessage($ID,$relyData);
+			
 			}
 			
 			
@@ -220,7 +220,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$multiMessage = new MultiMessageBuilder;
 			$multiMessage->add($textMessage); 
 			$replyData = $multiMessage;
-			$response = $bot->pushMessage($ID,$relyData);
+			
 			}
 			
 
@@ -231,9 +231,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$multiMessage = new MultiMessageBuilder;
 			$multiMessage->add($textMessage); 
 			$replyData = $multiMessage;
-			$response = $bot->pushMessage($ID,$relyData);
+			
 			}
-				
+				$response = $bot->pushMessage($id,$replyData);
 			}
 			
 			
