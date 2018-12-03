@@ -83,7 +83,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 	else if($isData2 > 0){
             $message = "C";
         }
-   	 else if(strpos($message, 'เริ่มทดสอบ') !== false){
+   	 else if(strpos($message, '123') !== false){
 	    $message = "D";
 	}
 
