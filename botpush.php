@@ -199,7 +199,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			case "D":
 			$_SESSION['views'] = 0;
 			if(isset($_SESSION['views'])){
-			$_SESSION['views']=1;
+			$_SESSION['views']=1+5;
 			}
 			else{
 			$_SESSION['views']=2;
