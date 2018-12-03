@@ -207,13 +207,6 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 				
 			while(1){
-			sleep(5);
-			$message = $events['events'][0]['message']['text'];
-			
-				
-			}
-			
-				
 			$textReplyMessage2 = $message;
 			$textMessage2 = new TextMessageBuilder($textReplyMessage2);
 				
@@ -221,7 +214,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$multiMessage->add($textMessage); 
 			$multiMessage->add($textMessage2); 
 			$replyData = $multiMessage;
-			
+			}
+	
 			}
 			
 			
