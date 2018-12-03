@@ -205,9 +205,22 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			if($count == 0){
 			$textReplyMessage = $count;
 			$textMessage = new TextMessageBuilder($textReplyMessage);
+				
+			while(true){
+			sleep(5);
+			$message = $events['events'][0]['message']['text'];
+			if(isset($mesaage)){
+				break;
+			}
+			}
 			
+				
+			$textReplyMessage2 = $message;
+			$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+				
 			$multiMessage = new MultiMessageBuilder;
 			$multiMessage->add($textMessage); 
+			$multiMessage->add($textMessage2); 
 			$replyData = $multiMessage;
 			
 			}
@@ -217,8 +230,13 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$textReplyMessage = $count;
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 			
+				
+			$textReplyMessage2 = $message;
+			$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+				
 			$multiMessage = new MultiMessageBuilder;
 			$multiMessage->add($textMessage); 
+			$multiMessage->add($textMessage2); 
 			$replyData = $multiMessage;
 			
 			}
@@ -228,8 +246,13 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$textReplyMessage = $count;
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 			
+				
+			$textReplyMessage2 = $message;
+			$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+				
 			$multiMessage = new MultiMessageBuilder;
 			$multiMessage->add($textMessage); 
+			$multiMessage->add($textMessage2); 
 			$replyData = $multiMessage;
 			
 			}
