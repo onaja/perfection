@@ -1,10 +1,11 @@
 <?php
-echo "Hello LINE BOT";
-Session_Start();
+
+session_Start();
 $name="นายวีระชัย นุกิจรัมย์";
  $old=21;
- Session_register("name");
- Session_register("old")
+ session_register("name");
+ session_register("old");
    echo "ค่าใน Session Name คือ $name <br>";
 echo "ค่าใน Session Old คือ $old <br>";
+echo "Hello LINE BOT";
 ?>
