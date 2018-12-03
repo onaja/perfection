@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 require "vendor/autoload.php";
 // การตั้งเกี่ยวกับ bot
 require_once 'bot_settings.php';
@@ -199,7 +199,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			case "D":
 			
 			$cookie_name = "views";
-			$cookie_value = "John Doe";
+			$cookie_value = 0;
 			setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day			
 			/*
 			if(isset($_SESSION['views'])) {
