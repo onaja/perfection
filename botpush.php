@@ -199,7 +199,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 		    break;
 			case "D":
+			
 			for($count = 0 ; $count < 3 ; $count++){
+				
 			if($count == 1){
 			$textReplyMessage = " Hello";
 			$textMessage = new TextMessageBuilder($textReplyMessage);
@@ -211,7 +213,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			}
 			
 			
-			if($count == 2){
+			else if($count == 2){
 			$textReplyMessage = " Hell";
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 			
@@ -222,7 +224,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			}
 			
 
-			if($count == 3){
+			else if($count == 3){
 			$textReplyMessage = "123";
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 			
@@ -231,6 +233,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$replyData = $multiMessage;
 			$response = $bot->replyMessage($replyToken,$replyData);
 			}
+				
 			}
 			
 			
