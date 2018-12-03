@@ -60,10 +60,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $id = $events['events'][0]['source']['userId'];   
 
 
-    $events2 = json_decode($content, true);
-	$replyToken2 = $events['events'][0]['replyToken'];
-	$message2 = $events['events'][0]['message']['text'];
-    
+   
     $strUrl = "https://api.line.me/v2/bot/message/push";
     //เชื่อมต่อ mlab
     $api_key="7vVKdrk-Rg7qp8C5KFUrkQRWmAJaazgQ";
@@ -205,9 +202,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 		    break;
 			case "D":
 			
-			 $message2 = $events2['events'][0]['message']['text'];;
+			 $message = $events2['events'][0]['message']['text'];;
 			
-			$textReplyMessage = $message2;
+			$textReplyMessage = $message;
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 				
 			$multiMessage = new MultiMessageBuilder;
