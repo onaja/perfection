@@ -199,7 +199,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			
 			session_start();
-			
+			$_SESSION['views'];
 			
 			if(isset($_SESSION['views'])){
 			$_SESSION['views']=$_SESSION['views']+1;
