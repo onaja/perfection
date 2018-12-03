@@ -205,8 +205,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$cookie_value = 0;
 				setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 			} else {
-				$_COOKIE[$cookie_name]++;
-				
+				$_COOKIE[$cookie_name]++;		
 			}
 			
 			
@@ -225,7 +224,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			//}
 
 			//$textReplyMessage = $_SESSION['views'];
-			$textReplyMessage = $_COOKIE[$cookie_name];
+			$textReplyMessage = $_COOKIE[$cookie_name] + " Hello"; 
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 			
 			$multiMessage = new MultiMessageBuilder;
