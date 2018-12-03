@@ -2,7 +2,7 @@
 echo "Hello LINE BOT";
 $old=21;
  Session_register("old")
-if(isset($_SESSION['old'])){
+if($_SESSION['old']>0){
 			$_SESSION['old']= $_SESSION['old'] + 1;
 			}
 			else{	
