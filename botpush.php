@@ -202,7 +202,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			for($count = 0 ; $count < 3 ; $count++){
 				
-			if($count == 1){
+			if($count == 0){
 			$textReplyMessage = " Hello";
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 			
@@ -213,7 +213,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			}
 			
 			
-			else if($count == 2){
+			else if($count == 1){
 			$textReplyMessage = " Hell";
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 			
@@ -224,7 +224,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			}
 			
 
-			else if($count == 3){
+			else if($count == 2){
 			$textReplyMessage = "123";
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 			
