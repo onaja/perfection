@@ -200,7 +200,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			session_start();
 			$count = 0;
-			session_register("count");
+			session_register("$count");
 			
 				
 			$textReplyMessage = $count+1;
