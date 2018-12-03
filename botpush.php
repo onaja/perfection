@@ -58,6 +58,11 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $message = strtolower($message);
     //รับ id ของผู้ใช้
     $id = $events['events'][0]['source']['userId'];   
+
+
+    $events2 = json_decode($content, true);
+	$replyToken2 = $events['events'][0]['replyToken'];
+	$message2 = $events['events'][0]['message']['text'];
     
     $strUrl = "https://api.line.me/v2/bot/message/push";
     //เชื่อมต่อ mlab
@@ -74,7 +79,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $data2 = json_decode($json2);
     $isData2 = sizeof($data2);
     
-	$count = 1;
+	$count = 0;
 	
         if (strpos($message, 'สอนบอท') !== false) {
             $message = "A";
@@ -200,7 +205,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 		    break;
 			case "D":
 			
-			 $message2 = $events['events'][0]['message']['text'];;
+			 $message2 = $events2['events'][0]['message']['text'];;
 			
 			$textReplyMessage = $message2;
 			$textMessage = new TextMessageBuilder($textReplyMessage);
