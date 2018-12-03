@@ -1,9 +1,11 @@
 <?php
 echo "Hello LINE BOT";
-if(isset($_SESSION['views'])){
-			$_SESSION['views']= $_SESSION['views'] + 1;
+$old=21;
+ Session_register("old")
+if(isset($_SESSION['old'])){
+			$_SESSION['old']= $_SESSION['old'] + 1;
 			}
 			else{	
-			$_SESSION['views']=2;
+			$_SESSION['old']=2;
 			}
-echo $_SESSION['views'];
+echo $_SESSION['old'];
