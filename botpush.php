@@ -199,8 +199,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			
 			session_start();
-			$count = 1;
-			$_SESSION['count2'] = $_SESSION['count2'] + $count;
+			
+			$_SESSION['count2'] = $_SESSION['count2'] + 1;
 			$textReplyMessage = $_SESSION['count2'];
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 			
