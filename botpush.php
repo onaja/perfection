@@ -199,18 +199,13 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 		    break;
 			case "D":
-			$textReplyMessage = "ถาม";
+			$textReplyMessage = $message;
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 				
-			$message = $events['events'][0]['message']['text'];
-			
-			$textReplyMessage2 = $message;	
-			$textMessage2 = new TextMessageBuilder($textReplyMessage2);
-			
 			$multiMessage = new MultiMessageBuilder;
 			$multiMessage->add($textMessage); 
-			$multiMessage->add($textMessage2); 
 			$replyData = $multiMessage;
+			$response = $bot->pushMessage($id,$replyData);
 			/*
 			for($count = 0 ; $count < 3 ; $count++){
 				
