@@ -204,6 +204,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			if(!isset($_COOKIE[$cookie_name])) {
 				$cookie_value = 0;
 				setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+			} else {
+				$_COOKIE[$cookie_name]++;
+				
 			}
 			
 			
@@ -216,7 +219,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			*/
 			
 			//if(isset($_COOKIE[$cookie_name])) {
-			    $_COOKIE[$cookie_name]++;
+			//    $_COOKIE[$cookie_name]++;
 			//} else {
 			//    $_COOKIE[$cookie_name] = 0;
 			//}
