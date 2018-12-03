@@ -207,10 +207,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 				
 				
-			$content = file_get_contents('php://input');	
-			$events = json_decode($content, true);
-			$replyToken = $events['events'][0]['replyToken'];
-			$message = $events['events'][0]['message']['text'];
+			$message=strtolower(trim($event->getText()));
 				
 				
 			$textReplyMessage2 = $message;
