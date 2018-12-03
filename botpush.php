@@ -3,7 +3,9 @@
 require "vendor/autoload.php";
 // การตั้งเกี่ยวกับ bot
 require_once 'bot_settings.php';
-    
+
+
+
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
@@ -197,16 +199,40 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 		    break;
 			case "D":
+			for($count = 0 ; $count < 3 ; $count++){
+			if($count == 1){
+			$textReplyMessage = " Hello";
+			$textMessage = new TextMessageBuilder($textReplyMessage);
 			
-			$cookie_name = "views";
-			
-			
-			if(!isset($_COOKIE[$cookie_name])) {
-				$cookie_value = 0;
-				setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-			} else {
-				$_COOKIE[$cookie_name]++;		
+			$multiMessage = new MultiMessageBuilder;
+			$multiMessage->add($textMessage); 
+			$replyData = $multiMessage;
+			$response = $bot->replyMessage($replyToken,$replyData);
 			}
+			}
+			
+			if($count == 2){
+			$textReplyMessage = " Hell";
+			$textMessage = new TextMessageBuilder($textReplyMessage);
+			
+			$multiMessage = new MultiMessageBuilder;
+			$multiMessage->add($textMessage); 
+			$replyData = $multiMessage;
+			$response = $bot->replyMessage($replyToken,$replyData);
+			}
+			}
+
+			if($count == 3){
+			$textReplyMessage = "123";
+			$textMessage = new TextMessageBuilder($textReplyMessage);
+			
+			$multiMessage = new MultiMessageBuilder;
+			$multiMessage->add($textMessage); 
+			$replyData = $multiMessage;
+			$response = $bot->replyMessage($replyToken,$replyData);
+			}
+			}
+			
 			
 			
 			/*
@@ -215,7 +241,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			} else {	
 				$_SESSION['views']=2;
 			}
-			*/
+			
 			
 			//if(isset($_COOKIE[$cookie_name])) {
 			//    $_COOKIE[$cookie_name]++;
@@ -231,7 +257,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$multiMessage->add($textMessage); 
 			$replyData = $multiMessage;
 			$response = $bot->replyMessage($replyToken,$replyData);
-			
+			*/
 			
 	       			
 			
