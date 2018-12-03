@@ -209,9 +209,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			while(true){
 			sleep(5);
 			$message = $events['events'][0]['message']['text'];
-			if(isset($mesaage)){
-				break;
-			}
+			
+				
 			}
 			
 				
