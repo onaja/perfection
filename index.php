@@ -1,6 +1,6 @@
 <?php
 
-session_Start();
+session_start();
 $name="นายวีระชัย นุกิจรัมย์";
  $old=21;
  session_register("name");
