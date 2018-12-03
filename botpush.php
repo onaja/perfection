@@ -199,21 +199,27 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			case "D":
 			
 			$cookie_name = "views";
-			$cookie_value = 0;
-			setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day			
+			
+			
+			if(!isset($_COOKIE[$cookie_name])) {
+				$cookie_value = 0;
+				setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+			}
+			
+			
 			/*
 			if(isset($_SESSION['views'])) {
-				$_SESSION['views']= $_SESSION['views'] + 1;
+				$_SESSION['views']= $_SESSION['views'] + 1;//
 			} else {	
 				$_SESSION['views']=2;
 			}
 			*/
 			
-			if(isset($_COOKIE[$cookie_name])) {
+			//if(isset($_COOKIE[$cookie_name])) {
 			    $_COOKIE[$cookie_name]++;
-			} else {
-			    $_COOKIE[$cookie_name] = 0;
-			}
+			//} else {
+			//    $_COOKIE[$cookie_name] = 0;
+			//}
 
 			//$textReplyMessage = $_SESSION['views'];
 			$textReplyMessage = $_COOKIE[$cookie_name];
