@@ -231,7 +231,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fclose($myfile);
 				
 				$myfile = fopen($fileName, "w");
-				$txtW = 1;
+				$txtW = $txt + 1;
 				fwrite($myfile, $txtW);
 				fclose($myfile);
 			}
