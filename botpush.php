@@ -213,7 +213,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$fileName = $id . ".txt";
 		
 			
-			if(filesize($fileName) == 0 || $tmp[0] >= 3) {
+			if(filesize($fileName) == 0) {
 				$myfile = fopen($fileName, "x+");
 				
 				$numQ = 2;
@@ -240,9 +240,12 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fclose($myfile);
 			}
 			
-			if($tmp[0] == 3){
+			if($tmp[0] >= 3){			
 				$myfile = fopen($fileName, "w");
-				fwrite($myfile, "");
+				
+				$numQ = 2;
+				$txtW = "1|";
+				fwrite($myfile, $txtW);
 				fclose($myfile);
 			}
 			
