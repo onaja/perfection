@@ -245,7 +245,6 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fwrite($myfile, "");
 				
 				fclose($myfile);
-				unlink($fileName);
 			
 			}
 			
