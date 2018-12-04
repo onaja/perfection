@@ -222,7 +222,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			if(filesize($fileName) == 0) {
 				$myfile = fopen($fileName, "x+");
-				$txtW = 1|;
+				$txtW = 1."|";
 				fwrite($myfile, $txtW);
 				fclose($myfile);
 			} else {
@@ -232,7 +232,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				
 				$tmp = explode("|", $txt);
 				
-				$tmp[0]+=1;
+				$tmp[0] = $tmp[0] + 1;
 				$tmp[1] .= $message.",";
 				
 				
