@@ -1,17 +1,14 @@
 <?php
-
 require "vendor/autoload.php";
 // การตั้งเกี่ยวกับ bot
 require_once 'bot_settings.php';
-
-
-
+    
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
-use LINE\LINEBot\Event;
-use LINE\LINEBot\Event\BaseEvent;
-use LINE\LINEBot\Event\MessageEvent;
+//use LINE\LINEBot\Event;
+//use LINE\LINEBot\Event\BaseEvent;
+//use LINE\LINEBot\Event\MessageEvent;
 use LINE\LINEBot\MessageBuilder;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 use LINE\LINEBot\MessageBuilder\StickerMessageBuilder;
@@ -58,15 +55,13 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $message = strtolower($message);
     //รับ id ของผู้ใช้
     $id = $events['events'][0]['source']['userId'];   
-
-
-   
+    
     $strUrl = "https://api.line.me/v2/bot/message/push";
     //เชื่อมต่อ mlab
-    $api_key="vo4A7mc22PVnCfj2tHaQEqjiAuB0M0Ix";
+    $api_key="7vVKdrk-Rg7qp8C5KFUrkQRWmAJaazgQ";
 	
     //colletion พูดคุยทั่วไป
-    $url.put = 'https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'';
+    $url = 'https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'';
     $json = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
     $data = json_decode($json);
     $isData = sizeof($data);
@@ -87,8 +82,11 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 	else if($isData2 > 0){
             $message = "C";
         }
-   	 else if(strpos($message, '123') !== false){
+   	 else if(strpos($message, 'เริ่มทดสอบ') !== false){
 	    $message = "D";
+	}
+	else if(strpos($message, 'ฟหกด') !== false){
+	    $message = "Z";
 	}
 
         switch ($message) {
@@ -100,12 +98,12 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			    $_user=str_replace("[","",$pieces[0]);
 			    $_system=str_replace("]","",$pieces[1]);
 			     //Post New Data
-			   $newData =array(
-				   	'id' => $id,
+			   $newData = json_encode(
+				      array(
 					'user' => $_user,
 					'system'=> $_system
+				      )
 				    );
-			   $newData = http_build_query($newData);
 				$opts = array(
 				   'http' => array(
 				   'method' => "POST",
@@ -201,21 +199,200 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 		    break;
 			case "D":
-			session_start();
-			if(isset($_SESSION['count']){
-				$count = 2;
-			}
-			   else{
-				$count = 1;
-			   }
+			for($count = 0 ; $count <15 ; $count++){
+	        
+		
+    		if($count == 0){
+			$textReplyMessage = "คุณคิดว่า คุณสามารถทำให้ดีกว่านี้ได้";
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			$textReplyMessage2 = $count;
+                	$textMessage2 = new TextMessageBuilder($textReplyMessage2);
 			
-			$textReplyMessage = $count;
-			$textMessage = new TextMessageBuilder($textReplyMessage);
+			$message = $events['events'][0]['message']['text'];
+			
+			$textReplyMessage3 = $message;
+                	$textMessage3 = new TextMessageBuilder($textReplyMessage3);
+		}
+		
+		if($count == 1){
+			$textReplyMessage = "คุณจะไม่ทำสิ่งต่าง ๆ ถ้าคุณไม่มีเวลาพอที่จะทำมันให้เสร็จสมบูรณ์";
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			$textReplyMessage2 = $count;
+                	$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+			
+			$message = $events['events'][0]['message']['text'];
+			
+			$textReplyMessage3 = $message;
+                	$textMessage3 = new TextMessageBuilder($textReplyMessage3);
+		}
 				
-			$multiMessage = new MultiMessageBuilder;
-			$multiMessage->add($textMessage); 
-			$replyData = $multiMessage;
-			$response = $bot->pushMessage($id,$replyData);
+		if($count == 2){
+			$textReplyMessage = "คุณกลัวที่จะล้มเหลว เมื่อทำงานสำคัญหรืองานใหญ่";
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			$textReplyMessage2 = $count;
+                	$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+			
+			$message = $events['events'][0]['message']['text'];
+			
+			$textReplyMessage3 = $message;
+                	$textMessage3 = new TextMessageBuilder($textReplyMessage3);
+		}
+				
+		if($count == 3){
+			$textReplyMessage = "คุณพยายามทำสิ่งที่ดีที่สุด เพื่อให้ผู้อื่นประทับใจ";
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			$textReplyMessage2 = $count;
+                	$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+			
+			$message = $events['events'][0]['message']['text'];
+			
+			$textReplyMessage3 = $message;
+                	$textMessage3 = new TextMessageBuilder($textReplyMessage3);
+		}
+				
+		if($count == 4){
+			$textReplyMessage = "คุณจะโทษตัวเอง เมื่อคุณทำผิดพลาด";
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			$textReplyMessage2 = $count;
+                	$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+			
+			$message = $events['events'][0]['message']['text'];
+			
+			$textReplyMessage3 = $message;
+                	$textMessage3 = new TextMessageBuilder($textReplyMessage3);
+		}
+				
+		if($count == 5){
+			$textReplyMessage = "คุณพยายามควบคุมอารมณ์ตนเองตลอดเวลา";
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			$textReplyMessage2 = $count;
+                	$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+			
+			$message = $events['events'][0]['message']['text'];
+			
+			$textReplyMessage3 = $message;
+                	$textMessage3 = new TextMessageBuilder($textReplyMessage3);
+		}
+				
+		if($count == 6){
+			$textReplyMessage = "คุณจะอารมณ์เสียเมื่อสิ่งต่าง ๆ ไม่เป็นไปตามแผน";
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			$textReplyMessage2 = $count;
+                	$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+			
+			$message = $events['events'][0]['message']['text'];
+			
+			$textReplyMessage3 = $message;
+                	$textMessage3 = new TextMessageBuilder($textReplyMessage3);
+		}
+			
+		if($count == 7){
+			$textReplyMessage = "คุณรู้สึกไม่พอใจในคุณภาพงานของผู้อื่นบ่อยครั้ง";
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			$textReplyMessage2 = $count;
+                	$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+			
+			$message = $events['events'][0]['message']['text'];
+			
+			$textReplyMessage3 = $message;
+                	$textMessage3 = new TextMessageBuilder($textReplyMessage3);
+		}
+				
+		if($count == 8){
+			$textReplyMessage = "คุณรู้สึกว่ามาตรฐานของคุณไม่สูงเกินไป";
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			$textReplyMessage2 = $count;
+                	$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+			
+			$message = $events['events'][0]['message']['text'];
+			
+			$textReplyMessage3 = $message;
+                	$textMessage3 = new TextMessageBuilder($textReplyMessage3);
+		}
+				
+		if($count == 9){
+			$textReplyMessage = "คุณกลัวว่าคนอื่นจะคิดเล็กคิดน้อยกับฉันถ้าฉันทำงานผิดพลาด";
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			$textReplyMessage2 = $count;
+                	$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+			
+			$message = $events['events'][0]['message']['text'];
+			
+			$textReplyMessage3 = $message;
+                	$textMessage3 = new TextMessageBuilder($textReplyMessage3);
+		}
+				
+		if($count == 10){
+			$textReplyMessage = "คุณพยายามปรับปรุงตนเองตลอดเวลา";
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			$textReplyMessage2 = $count;
+                	$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+			
+			$message = $events['events'][0]['message']['text'];
+			
+			$textReplyMessage3 = $message;
+                	$textMessage3 = new TextMessageBuilder($textReplyMessage3);
+		}
+				
+		if($count == 11){
+			$textReplyMessage = "คุณจะไม่มีความสุขถ้าสิ่งที่คุณทำต่ำกว่ามาตรฐาน";
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			$textReplyMessage2 = $count;
+                	$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+			
+			$message = $events['events'][0]['message']['text'];
+			
+			$textReplyMessage3 = $message;
+                	$textMessage3 = new TextMessageBuilder($textReplyMessage3);
+		}
+				
+		if($count == 12){
+			$textReplyMessage = "บ้านและที่ทำงานต้องสะอาดและเรียบร้อยเสมอ";
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			$textReplyMessage2 = $count;
+                	$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+			
+			$message = $events['events'][0]['message']['text'];
+			
+			$textReplyMessage3 = $message;
+                	$textMessage3 = new TextMessageBuilder($textReplyMessage3);
+		}
+				
+		if($count == 13){
+			$textReplyMessage = "คุณรู้สึกว่าด้อยกว่าผู้อื่น ที่มีความฉลาดและประสบความสำเร็จมากกว่า";
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			$textReplyMessage2 = $count;
+                	$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+			
+			$message = $events['events'][0]['message']['text'];
+			
+			$textReplyMessage3 = $message;
+                	$textMessage3 = new TextMessageBuilder($textReplyMessage3);
+		}
+				
+		if($count == 14){
+			$textReplyMessage = "คุณต้องดูดีที่สุดเมื่ออยู่ในที่สาธารณะ";
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			$textReplyMessage2 = $count;
+                	$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+			
+			$message = $events['events'][0]['message']['text'];
+			
+			$textReplyMessage3 = $message;
+                	$textMessage3 = new TextMessageBuilder($textReplyMessage3);
+		}
+			
+				
+		
+				
+	       				
+                $multiMessage = new MultiMessageBuilder;
+                $multiMessage->add($textMessage);   
+		$multiMessage->add($textMessage2);  
+		$multiMessage->add($textMessage3);
+                $replyData = $multiMessage; 
+		$response = $bot->pushMessage($id,$replyData);
+			}
 			
 		   break;
         default:
