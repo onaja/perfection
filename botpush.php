@@ -119,7 +119,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				  }
 				}
 			
-                    $textReplyMessage = $newData;
+                    $textReplyMessage = $returnValue;
                     $textMessage = new TextMessageBuilder($textReplyMessage);
                     $stickerID = 41;
                     $packageID = 2;
