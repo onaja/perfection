@@ -213,7 +213,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$fileName = $id . ".txt";
 		
 			
-			if(filesize($fileName) == 0) {
+			if(filesize($fileName) == "") {
 				$myfile = fopen($fileName, "x+");
 				
 				$numQ = 2;
