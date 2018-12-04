@@ -66,7 +66,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $api_key="vo4A7mc22PVnCfj2tHaQEqjiAuB0M0Ix";
 	
     //colletion พูดคุยทั่วไป
-    $url = 'https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'';
+    $url.put = 'https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'';
     $json = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
     $data = json_decode($json);
     $isData = sizeof($data);
@@ -114,7 +114,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			       )
 			    );
 			    $context = stream_context_create($opts);
-			    $returnValue = file_get_contents($url.put,false,$context);
+			    $returnValue = file_get_contents($url,false,$context);
 
 				  }
 				}
