@@ -216,7 +216,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			$fileName = $id . ".txt";
 			
-			$myfile = fopen($fileName, "x+");
+			$myfile = fopen($fileName, "x+")
 			
 			$txt = fread($myfile,filesize($fileName));
 			$txtW = 0;
@@ -232,7 +232,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			fclose($myfile);
 			
-			$textReplyMessage = $txt;
+			$textReplyMessage = $myfile." : ".$txt;
 			
 			
 			
