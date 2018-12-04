@@ -59,7 +59,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     
     $strUrl = "https://api.line.me/v2/bot/message/push";
     //เชื่อมต่อ mlab
-    $api_key="7vVKdrk-Rg7qp8C5KFUrkQRWmAJaazgQ";
+    $api_key="vo4A7mc22PVnCfj2tHaQEqjiAuB0M0Ix";
 	
     //colletion พูดคุยทั่วไป
     $url = 'https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'';
