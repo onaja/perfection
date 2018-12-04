@@ -246,17 +246,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				
 				fclose($myfile);
 				unlink($fileName);
-				$textReplyMessage = filesize($fileName);
 			
-			
-			
-				$textMessage = new TextMessageBuilder($textReplyMessage); 
-
-				$multiMessage = new MultiMessageBuilder;
-				$multiMessage->add($textMessage);   			
-
-				$replyData = $multiMessage; 
-				$response = $bot->pushMessage($id,$replyData);	
 			}
 			
 	
