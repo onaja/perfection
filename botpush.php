@@ -249,7 +249,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			//fclose($myfile);
 			
-			$textReplyMessage = "next question ok " + $tmp[0];
+			$textReplyMessage = "next question ok " . $tmp[0];
 			
 			
 			
