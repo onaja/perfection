@@ -208,13 +208,12 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			}
 			
 				
-		
+		$textReplyMessage = $_SESSION['count'];
+		$textMessage = new TextMessageBuilder($textReplyMessage); 
 				
 	       				
                 $multiMessage = new MultiMessageBuilder;
                 $multiMessage->add($textMessage);   
-		$multiMessage->add($textMessage2);  
-		$multiMessage->add($textMessage3);
                 $replyData = $multiMessage; 
 		$response = $bot->pushMessage($id,$replyData);
 			}
