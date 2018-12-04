@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "vendor/autoload.php";
 // การตั้งเกี่ยวกับ bot
 require_once 'bot_settings.php';
@@ -196,7 +197,23 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 		    break;
 			case "D":
-			for($count = 0 ; $count <15 ; $count++){
+			
+			if(isset($_SESSION['views'])){
+			$_SESSION['views'] = $_SESSION['views']+ 1;
+			}
+			else{
+			$_SESSION['views'] = 1;
+			}
+			$textReplyMessage = $_SESSION['views'];
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			
+			 $multiMessage = new MultiMessageBuilder;
+			$multiMessage->add($textMessage);   
+			
+			$replyData = $multiMessage; 
+			$response = $bot->pushMessage($id,$replyData);
+			
+			/*for($count = 0 ; $count <15 ; $count++){
 	        
 		
     		if($count == 0){
@@ -389,7 +406,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 		$multiMessage->add($textMessage3);
                 $replyData = $multiMessage; 
 		$response = $bot->pushMessage($id,$replyData);
-			}
+			}*/
 			
 		   break;
         default:
