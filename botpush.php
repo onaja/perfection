@@ -1,5 +1,5 @@
 <?php
-//session_start();
+
 require "vendor/autoload.php";
 // การตั้งเกี่ยวกับ bot
 require_once 'bot_settings.php';
@@ -201,8 +201,13 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 		    break;
 			case "D":
-			
-			 $message = $events['events'][0]['message']['text'];;
+			session_start();
+			if(isset($_SESSION['count']){
+				$count = 2;
+			}
+			   else{
+				$count = 1;
+			   }
 			
 			$textReplyMessage = $message;
 			$textMessage = new TextMessageBuilder($textReplyMessage);
@@ -211,65 +216,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$multiMessage->add($textMessage); 
 			$replyData = $multiMessage;
 			$response = $bot->pushMessage($id,$replyData);
-			/*
-			for($count = 0 ; $count < 3 ; $count++){
-				
-			if($count == 0){
-			$textReplyMessage = $count;
-			$textMessage = new TextMessageBuilder($textReplyMessage);
-				
-				
-			$message = getMessageContent($id);
-				
-				
-			$textReplyMessage2 = $message;
-			$textMessage2 = new TextMessageBuilder($textReplyMessage2);
-				
-			$multiMessage = new MultiMessageBuilder;
-			$multiMessage->add($textMessage); 
-			$multiMessage->add($textMessage2); 
-			$replyData = $multiMessage;
 			
-	
-			}
-			
-			
-			else if($count == 1){
-			$textReplyMessage = $count;
-			$textMessage = new TextMessageBuilder($textReplyMessage);
-			
-				
-			$textReplyMessage2 = $message;
-			$textMessage2 = new TextMessageBuilder($textReplyMessage2);
-				
-			$multiMessage = new MultiMessageBuilder;
-			$multiMessage->add($textMessage); 
-			$multiMessage->add($textMessage2); 
-			$replyData = $multiMessage;
-			
-			}
-			
-
-			else if($count == 2){
-			$textReplyMessage = $count;
-			$textMessage = new TextMessageBuilder($textReplyMessage);
-			
-				
-			$textReplyMessage2 = $message;
-			$textMessage2 = new TextMessageBuilder($textReplyMessage2);
-				
-			$multiMessage = new MultiMessageBuilder;
-			$multiMessage->add($textMessage); 
-			$multiMessage->add($textMessage2); 
-			$replyData = $multiMessage;
-			
-			}
-				$response = $bot->pushMessage($id,$replyData);
-			}
-			
-	       			
-			
-			*/
 		   break;
         default:
                     
