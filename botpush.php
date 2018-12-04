@@ -238,7 +238,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			//fclose($myfile);
 			
-			$textReplyMessage = $txtW . ":" . filesize($fileName);
+			$textReplyMessage = $txtW . ":" . $txt. ":" . filesize($fileName);
 			
 			
 			
