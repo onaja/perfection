@@ -209,7 +209,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$count = 1;
 			   }
 			
-			$textReplyMessage = $message;
+			$textReplyMessage = $count;
 			$textMessage = new TextMessageBuilder($textReplyMessage);
 				
 			$multiMessage = new MultiMessageBuilder;
