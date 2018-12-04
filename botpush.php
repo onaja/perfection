@@ -1,5 +1,4 @@
 <?php
-session_start();
 require "vendor/autoload.php";
 // การตั้งเกี่ยวกับ bot
 require_once 'bot_settings.php';
