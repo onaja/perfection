@@ -226,6 +226,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fwrite($myfile, $txtW);
 				fclose($myfile);
 			} else {
+				
+				
 				$myfile = fopen($fileName, "r");
 				$txt = fread($myfile,filesize($fileName));
 				fclose($myfile);
@@ -244,7 +246,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			//fclose($myfile);
 			
-			$textReplyMessage = "next question ok";
+			$textReplyMessage = "next question ok " + $tmp[0];
 			
 			
 			
