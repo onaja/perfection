@@ -216,12 +216,13 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			$fileName = $id . ".txt";
 			
-			$myfile = fopen($fileName, "x+");
+			//$myfile = fopen($fileName, "x+");
 			
 			//$txt = fread($myfile,filesize($fileName));
 			
 			if(filesize($fileName) == 0) {
-				$txtW = 0;
+				$myfile = fopen($fileName, "x+");
+				$txtW = 1;
 				fwrite($myfile, $txtW);
 				fclose($myfile);
 			} else {
@@ -235,7 +236,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fclose($myfile);
 			}
 			
-			fclose($myfile);
+			//fclose($myfile);
 			
 			$textReplyMessage = $txtW . ":" . filesize($fileName);
 			
