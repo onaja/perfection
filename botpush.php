@@ -226,12 +226,12 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fwrite($myfile, $txtW);
 				fclose($myfile);
 			} else {
-				$myfile = fopen($fileName, "x+");
+				$myfile = fopen($fileName, "r");
 				$txt = fread($myfile,filesize($fileName));
 				fclose($myfile);
 				
-				$myfile = fopen($fileName, "x+");
-				$txtW = $txt + 1;
+				$myfile = fopen($fileName, "w");
+				$txtW = 1;
 				fwrite($myfile, $txtW);
 				fclose($myfile);
 			}
