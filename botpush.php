@@ -197,7 +197,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 		    break;
 			case "D":
-			
+/*			
 			if(isset($_SESSION['views'])){
 			$_SESSION['views'] = $_SESSION['views']+ 1;
 			}
@@ -212,6 +212,37 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			$replyData = $multiMessage; 
 			$response = $bot->pushMessage($id,$replyData);
+*/
+			
+			$fileName = $id . ".txt";
+			
+			$myfile = fopen($fileName, "x+");
+			
+			$txt = fread($myfile,filesize($fileName));
+			$txtW = 0;
+			
+			if($txt == "") {
+			
+				fwrite($myfile, $txtW);
+			
+			} else {
+				$txtW++;
+				fwrite($myfile, $txtW);
+			}
+			
+			fclose($myfile);
+			
+			$textReplyMessage = $txt;
+			
+			
+			
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			
+			$multiMessage = new MultiMessageBuilder;
+			$multiMessage->add($textMessage);   			
+			
+			$replyData = $multiMessage; 
+			$response = $bot->pushMessage($id,$replyData);			
 			
 			/*for($count = 0 ; $count <15 ; $count++){
 	        
