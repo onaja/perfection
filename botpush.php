@@ -242,10 +242,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			if($tmp[0] >= 3){
 				$myfile = fopen($fileName, "");
-				
-				$numQ = 2;
-				$txtW = "1|";
-				fwrite($myfile, $txtW);
+				fwrite($myfile, "");
 				fclose($myfile);
 			}
 			
