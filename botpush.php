@@ -201,14 +201,13 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			case "D":
 	  
 		session_start();
-		if(isset($_SESSION['count']){
-			$count = 2;
+		if(isset($_SESSION['views'])){
+		    $_SESSION['views'] = 2;
 		}
 		else{
-			$count = 1;
+		    $_SESSION['views'] = 1;
 		}
-				
-		$textReplyMessage = $_SESSION['count'];
+		$textReplyMessage = $_SESSION['views'];
 		$textMessage = new TextMessageBuilder($textReplyMessage);   
 				
 	       				
