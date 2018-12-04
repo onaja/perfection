@@ -241,7 +241,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			}
 			
 			if($tmp[0] >= 3){
-				$myfile = fopen($fileName, "x+");
+				$myfile = fopen($fileName, "x");
 				fwrite($myfile, "");
 				fclose($myfile);
 			}
