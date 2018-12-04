@@ -242,7 +242,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			if($tmp[0] >= 15){
 				$textReplyMessage = "hell";
-				textMessage = new TextMessageBuilder($textReplyMessage); 
+				$textMessage = new TextMessageBuilder($textReplyMessage); 
 			
 			$multiMessage = new MultiMessageBuilder;
 			$multiMessage->add($textMessage);   			
