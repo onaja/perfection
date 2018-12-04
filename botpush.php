@@ -222,11 +222,11 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$txtW = 0;
 			
 			if(filesize($fileName) == 0) {
-				$txtW = "hello";
+				$txtW = 0;
 				fwrite($myfile, $txtW);
 			
 			} else {
-				$txtW = "hello world";
+				$txtW++;
 				fwrite($myfile, $txtW);
 			}
 			
