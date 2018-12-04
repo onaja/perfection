@@ -101,6 +101,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			    $_system=str_replace("]","",$pieces[1]);
 			     //Post New Data
 			   $newData =array(
+				   	'id' => $id,
 					'user' => $_user,
 					'system'=> $_system
 				    );
