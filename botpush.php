@@ -209,30 +209,11 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 		    break;
 			case "D":
-/*			
-			if(isset($_SESSION['views'])){
-			$_SESSION['views'] = $_SESSION['views']+ 1;
-			}
-			else{
-			$_SESSION['views'] = 1;
-			}
-			$textReplyMessage = $_SESSION['views'];
-                	$textMessage = new TextMessageBuilder($textReplyMessage); 
-			
-			 $multiMessage = new MultiMessageBuilder;
-			$multiMessage->add($textMessage);   
-			
-			$replyData = $multiMessage; 
-			$response = $bot->pushMessage($id,$replyData);
-*/
 			
 			$fileName = $id . ".txt";
+		
 			
-			//$myfile = fopen($fileName, "x+");
-			
-			//$txt = fread($myfile,filesize($fileName));
-			
-			if(filesize($fileName) == 0) {
+			if($tmp[0] >= 15) {
 				$myfile = fopen($fileName, "x+");
 				
 				$numQ = 2;
@@ -258,9 +239,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fwrite($myfile, $txtW);
 				fclose($myfile);
 			}
-			
-			//fclose($myfile);
-			
+	
 			$textReplyMessage = "next question ok " . $tmp[0];
 			
 			
@@ -271,7 +250,25 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$multiMessage->add($textMessage);   			
 			
 			$replyData = $multiMessage; 
-			$response = $bot->pushMessage($id,$replyData);			
+			$response = $bot->pushMessage($id,$replyData);		
+/*			
+			if(isset($_SESSION['views'])){
+			$_SESSION['views'] = $_SESSION['views']+ 1;
+			}
+			else{
+			$_SESSION['views'] = 1;
+			}
+			$textReplyMessage = $_SESSION['views'];
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			
+			 $multiMessage = new MultiMessageBuilder;
+			$multiMessage->add($textMessage);   
+			
+			$replyData = $multiMessage; 
+			$response = $bot->pushMessage($id,$replyData);
+*/
+			
+				
 			
 			/*for($count = 0 ; $count <15 ; $count++){
 	        
