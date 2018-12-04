@@ -100,12 +100,11 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			    $_user=str_replace("[","",$pieces[0]);
 			    $_system=str_replace("]","",$pieces[1]);
 			     //Post New Data
-			   $newData = json_encode(
-				      array(
+			   $newData =array(
 					'user' => $_user,
 					'system'=> $_system
-				      )
 				    );
+			   $newData = http_build_query($newData);
 				$opts = array(
 				   'http' => array(
 				   'method' => "POST",
@@ -113,7 +112,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				   'content' => $newData
 			       )
 			    );
-			    $context = stream_context_create($opts);
+			    $context = context_create_stream($opts);
 			    $returnValue = file_get_contents($url,false,$context);
 
 				  }
