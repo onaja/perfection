@@ -232,7 +232,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			fclose($myfile);
 			
-			$textReplyMessage = $myfile." : ".$txt;
+			$textReplyMessage = $txtW;
 			
 			
 			
