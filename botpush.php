@@ -72,10 +72,16 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $data2 = json_decode($json2);
     $isData2 = sizeof($data2);
 
-	$url3 = 'https://api.mlab.com/api/1/databases/rup_db/collections/question?apiKey='.$api_key.'';
-    $json3 = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/question?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
-    $data3 = json_decode($json2);
-    $isData3 = sizeof($data2);
+    $url3 = 'https://api.mlab.com/api/1/databases/rup_db/collections/no?apiKey='.$api_key.'';
+    $json3 = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/no?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
+    $data3 = json_decode($json3);
+    $isData3 = sizeof($data3);
+
+    $url4 = 'https://api.mlab.com/api/1/databases/rup_db/collections/question?apiKey='.$api_key.'';
+    $json4 = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/question?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
+    $data4 = json_decode($json4);
+    $isData4 = sizeof($data4);
+
 
     
 	$count = 0;
