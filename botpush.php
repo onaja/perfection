@@ -221,18 +221,18 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$txt = fread($myfile,filesize($fileName));
 			$txtW = 0;
 			
-			if($txt == "") {
+			if(filesize($fileName) == 0) {
 				$txtW = "hello";
 				fwrite($myfile, $txtW);
 			
 			} else {
-				$txtW = "world";
+				$txtW = "hello world";
 				fwrite($myfile, $txtW);
 			}
 			
 			fclose($myfile);
 			
-			$textReplyMessage = $txtW . filesize($fileName);
+			$textReplyMessage = $txtW . ":" . filesize($fileName);
 			
 			
 			
