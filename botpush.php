@@ -202,7 +202,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 		    break;
 			case "D":
 			
-			 $message = $events2['events'][0]['message']['text'];;
+			 $message = $events['events'][0]['message']['text'];;
 			
 			$textReplyMessage = $message;
 			$textMessage = new TextMessageBuilder($textReplyMessage);
