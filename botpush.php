@@ -222,6 +222,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			if(filesize($fileName) == 0) {
 				$myfile = fopen($fileName, "x+");
+				
+				$numQ = 2;
 				$txtW = "1|";
 				fwrite($myfile, $txtW);
 				fclose($myfile);
@@ -231,8 +233,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$myfile = fopen($fileName, "r");
 				$txt = fread($myfile,filesize($fileName));
 				fclose($myfile);
-				
+
 				$tmp = explode("|", $txt);
+				$numQ = $tmp[0] + 2;
 				
 				$tmp[0] = $tmp[0] + 1;
 				$tmp[1] = $tmp[1] . $message . ",";
