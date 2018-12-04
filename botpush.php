@@ -112,7 +112,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				   'content' => $newData
 			       )
 			    );
-			    $context = context_create_stream($opts);
+			    $context = stream_context_create($opts);
 			    $returnValue = file_get_contents($url,false,$context);
 
 				  }
