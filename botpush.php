@@ -241,11 +241,14 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			}
 			
 			if($tmp[0] >= 15){
-				$myfile = fopen($fileName, "x+");
-				$numQ = 2;
-				$txtW = "1|";
-				fwrite($myfile, $txtW);
-				fclose($myfile);
+				$textReplyMessage = "hell";
+				textMessage = new TextMessageBuilder($textReplyMessage); 
+			
+			$multiMessage = new MultiMessageBuilder;
+			$multiMessage->add($textMessage);   			
+			
+			$replyData = $multiMessage; 
+			$response = $bot->pushMessage($id,$replyData);	
 			}
 			
 	
