@@ -213,7 +213,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$fileName = $id . ".txt";
 		
 			
-			if(filesize($fileName) == 0) {
+			if(filesize($fileName) == 0 || ) {
 				$myfile = fopen($fileName, "x+");
 				
 				$numQ = 2;
@@ -242,11 +242,21 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			if($tmp[0] >= 3){			
 				$myfile = fopen($fileName, "w");
+				fwrite($myfile, "");
 				
-				$numQ = 2;
-				$txtW = "1|";
-				fwrite($myfile, $txtW);
 				fclose($myfile);
+				
+				$textReplyMessage = filesize($fileName);
+			
+			
+			
+				$textMessage = new TextMessageBuilder($textReplyMessage); 
+
+				$multiMessage = new MultiMessageBuilder;
+				$multiMessage->add($textMessage);   			
+
+				$replyData = $multiMessage; 
+				$response = $bot->pushMessage($id,$replyData);	
 			}
 			
 	
