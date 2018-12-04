@@ -240,7 +240,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fclose($myfile);
 			}
 			
-			if($tmp[0] >= 15){
+			if($tmp[0] >= 3){
 				$myfile = fopen($fileName, "");
 				
 				$numQ = 2;
