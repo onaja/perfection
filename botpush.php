@@ -83,12 +83,10 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 	else if($isData2 > 0){
             $message = "C";
         }
-   	 else if(strpos($message, 'เริ่มทดสอบ') !== false){
+   	 else if(strpos($message, '123') !== false){
 	    $message = "D";
 	}
-	else if(strpos($message, '123') !== false){
-	    $message = "Z";
-	}
+	
 
         switch ($message) {
             case "A":
@@ -216,7 +214,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                 $multiMessage->add($textMessage);   
 		
                 $replyData = $multiMessage; 
-		$response = $bot->pushMessage($id,$replyData);
+		$response = $bot->replyMessage($replyToken,$replyData);
 			}
 			
 		   break;
