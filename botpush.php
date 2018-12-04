@@ -213,7 +213,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$fileName = $id . ".txt";
 		
 			
-			if($tmp[0] >= 15) {
+			if(filesize($fileName) == 0) {
 				$myfile = fopen($fileName, "x+");
 				
 				$numQ = 2;
@@ -239,6 +239,15 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fwrite($myfile, $txtW);
 				fclose($myfile);
 			}
+			
+			if($tmp[0] >= 15){
+				$myfile = fopen($fileName, "x+");
+				$numQ = 2;
+				$txtW = "1|";
+				fwrite($myfile, $txtW);
+				fclose($myfile);
+			}
+			
 	
 			$textReplyMessage = "next question ok " . $tmp[0];
 			
