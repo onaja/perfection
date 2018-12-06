@@ -239,8 +239,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$temp = explode(",", $tmp[1]);
 			
 				$myfile = fopen($fileName, "w");
-				$txtW = $tmp[0] . "|" . $tmp[1] ."-" . $count;
-				fwrite($myfile, $txtW);
+				$txtW = $tmp[0] . "|" . $tmp[1];
+				$txtX = $tmp[0] . "|" . $tmp[1] ."-" . $count;
+				fwrite($myfile, $txtX);
 				fclose($myfile);
 			}
 			
