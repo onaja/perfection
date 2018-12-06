@@ -343,19 +343,38 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 						
 			}
 			else{
-				$textReplyMessage = $question;
-				$textMessage = new TextMessageBuilder($textReplyMessage); 
+				
+				if($tmp[0] >= 16){
+					$textReplyMessage = "ยินดีด้วย คุณยังไม่มีภาวะเสี่ยงที่จะเป็นภาวะ Perfectionist นี่เป็นเพียงแบบทดสอบเริ่มต้น ควรไปพบจิตแพทย์เพื่อความแน่ใจ";
+					$textMessage = new TextMessageBuilder($textReplyMessage); 
+					
+					$multiMessage = new MultiMessageBuilder;
+					$multiMessage->add($textMessage);   
+					
+					$replyData = $multiMessage; 
+					$response = $bot->pushMessage($id,$replyData);
+					
+					$myfile = fopen($fileName, "w");
+					fwrite($myfile, "");
+					fclose($myfile);
+					unlink($fileName);
+				}
+				else{
+					$textReplyMessage = $question;
+					$textMessage = new TextMessageBuilder($textReplyMessage); 
 
-				$textReplyMessage2 = $txtW;
-				$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
+					$textReplyMessage2 = $txtW;
+					$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
 
-				$multiMessage = new MultiMessageBuilder;
-				$multiMessage->add($textMessage);   			
-				$multiMessage->add($textMessage2); 
+					$multiMessage = new MultiMessageBuilder;
+					$multiMessage->add($textMessage);   			
+					$multiMessage->add($textMessage2); 
 
-				$replyData = $multiMessage; 
-				$response = $bot->pushMessage($id,$replyData);	
+					$replyData = $multiMessage; 
+					$response = $bot->pushMessage($id,$replyData);	
+				}	
 			}
+			
 			
 			
 	
