@@ -95,7 +95,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 	else if($isData2 > 0){
             $s_message = "C";
         }
-   	 else if(strpos($message, '123') !== false){
+   	 else if(strpos($message, 'yes' || strpos($message, 'no' ) !== false){
 	    $s_message = "D";
 	}
 
@@ -221,8 +221,6 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fwrite($myfile, $txtW);
 				fclose($myfile);
 				
-				$txt = fread($myfile,filesize($fileName));
-				$tmp = explode("|", $txt);
 				$tmp[1] = $tmp[1] . $message . ",";
 			} else {
 				
