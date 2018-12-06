@@ -308,11 +308,11 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				unlink($fileName);
 			}
 			
-	
-			$textReplyMessage = "next question ok " . $tmp[0];
-                	$textMessage = new TextMessageBuilder($textReplyMessage); 
 			
-			$textReplyMessage2 = $question;
+			$textReplyMessage = $question;
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+	
+			$textReplyMessage2 = "next question ok " . $tmp[0];
                 	$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
 			
 			$multiMessage = new MultiMessageBuilder;
