@@ -233,7 +233,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$numQ = $tmp[0] + 2;
 				
 				$tmp[0] = $tmp[0] + 1;
-				$tmp[1] = $tmp[1] . $message . "," . $count;	
+				$tmp[1] = $tmp[1] . $message . ",";	
+				$answer = $tmp[1] . "-" . $count
 				
 				$temp = explode(",", $tmp[1]);
 			
@@ -317,7 +318,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$textReplyMessage = $question;
                 	$textMessage = new TextMessageBuilder($textReplyMessage); 
 	
-			$textReplyMessage2 = $tmp[1];
+			$textReplyMessage2 = $answer;
                 	$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
 			
 			$textReplyMessage3 = $temp[0];
