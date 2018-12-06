@@ -220,7 +220,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$txtW = "1|";
 				fwrite($myfile, $txtW);
 				fclose($myfile);
-				$tmp[1] = $message . ",";
+				$tmp[1] = $tmp[1] . $message . ",";
 			} else {
 				
 				$myfile = fopen($fileName, "r");
@@ -231,14 +231,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$numQ = $tmp[0] + 2;
 				
 				$tmp[0] = $tmp[0] + 1;
-				
-				if($tmp[0] <= 1) {
-				$tmp[1] = $message . ",";
-				}
-				else{
 				$tmp[1] = $tmp[1] . $message . ",";
-				}
 				
+			
 				$myfile = fopen($fileName, "w");
 				$txtW = $tmp[0] . "|" . $tmp[1];
 				fwrite($myfile, $txtW);
