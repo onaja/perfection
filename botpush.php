@@ -218,7 +218,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				
 				$numQ = 2;
 				$txtW = "1|";
-				$count = 0;
+				
 				fwrite($myfile, $txtW);
 				fclose($myfile);
 				
