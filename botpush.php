@@ -234,25 +234,13 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				
 				$tmp[0] = $tmp[0] + 1;
 				$tmp[1] = $tmp[1] . $message . ",";	
-				$answer = $tmp[1] . "-" . $count;
-				
-				$temp = explode(",", $tmp[1]);
-				
-				if(strpos($message, 'yes') !== false ){
+				$count = $count + 1;
+				/*if(strpos($message, 'yes') !== false ){
 					$count = $count + 1;
-				}
+				}*/
 				
 				$myfile = fopen($fileName, "w");
 				$txtW = $tmp[0] . "|" . $tmp[1] . "-" . $count;
-				
-				
-				
-				
-				if($tmp[0]>=15){
-					$txtW = $tmp[0] . "|" . $tmp[1];
-					$txtX = $txtW . "-" . $count;
-					fwrite($myfile, $txtX);
-				}
 				
 				fwrite($myfile, $txtW);
 				fclose($myfile);
@@ -336,7 +324,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$textReplyMessage = $question;
                 	$textMessage = new TextMessageBuilder($textReplyMessage); 
 	
-			$textReplyMessage2 = $txtX;
+			$textReplyMessage2 = $txtW;
                 	$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
 				
 			$multiMessage = new MultiMessageBuilder;
