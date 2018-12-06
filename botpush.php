@@ -326,12 +326,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			}
 			
 			if($tmp[2] >= 5){
-				$textReplyMessage = "คุณมีโอกาสเสี่ยงที่จะเป็นภาวะ Perfectionist นี่เป็นเพียงแบบทดสอบเริ่มต้น ควรไปพบจิตแพทย์เพื่อความแน่ใจ";
-                		$textMessage = new TextMessageBuilder($textReplyMessage); 
-				
-				$multiMessage = new MultiMessageBuilder;
-				$multiMessage->add($textMessage);   	
-				$response = $bot->pushMessage($id,$replyData);
+				$question = "คุณมีโอกาสเสี่ยงที่จะเป็นภาวะ Perfectionist นี่เป็นเพียงแบบทดสอบเริ่มต้น ควรไปพบจิตแพทย์เพื่อความแน่ใจ";
 			}
 			
 	
