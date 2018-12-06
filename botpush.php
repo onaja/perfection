@@ -324,11 +324,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fclose($myfile);
 				unlink($fileName);
 			}
-			
-			$myfile = fopen($fileName, "r");
-			$txt = fread($myfile,filesize($fileName));
-			fclose($myfile);
-			
+	
 			if($tmp[2] >= 5){
 				$textReplyMessage = "คุณมีโอกาสเสี่ยงที่จะเป็นภาวะ Perfectionist นี่เป็นเพียงแบบทดสอบเริ่มต้น ควรไปพบจิตแพทย์เพื่อความแน่ใจ";
 				$textMessage = new TextMessageBuilder($textReplyMessage); 
@@ -338,6 +334,13 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				
 				$replyData = $multiMessage; 
 				$response = $bot->pushMessage($id,$replyData);	
+				
+				$myfile = fopen($fileName, "w");
+				fwrite($myfile, "");
+				
+				fclose($myfile);
+				unlink($fileName);
+						
 			}
 			else{
 				$textReplyMessage = $question;
