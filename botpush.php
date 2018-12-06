@@ -325,21 +325,14 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				unlink($fileName);
 			}
 			
-			
-
-			
-			
-			
-		
-			
+	
 			$textReplyMessage = $question;
                 	$textMessage = new TextMessageBuilder($textReplyMessage); 
 	
 			$textReplyMessage2 = $txtW;
                 	$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
 			
-			$textReplyMessage3 = $tmp[2];
-                	$textMessage3 = new TextMessageBuilder($textReplyMessage3); 
+			
 				
 			$multiMessage = new MultiMessageBuilder;
 			$multiMessage->add($textMessage);   			
@@ -348,6 +341,17 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			$replyData = $multiMessage; 
 			$response = $bot->pushMessage($id,$replyData);		
+			
+			if(filesize($fileName) != 0 ) {
+				$textReplyMessage3 = $tmp[2];
+                		$textMessage3 = new TextMessageBuilder($textReplyMessage3); 
+				
+				$multiMessage = new MultiMessageBuilder;
+				$multiMessage->add($textMessage3); 
+			
+				$replyData = $multiMessage; 
+				$response = $bot->pushMessage($id,$replyData);
+			}
 /*			
 			if(isset($_SESSION['views'])){
 			$_SESSION['views'] = $_SESSION['views']+ 1;
