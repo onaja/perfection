@@ -233,22 +233,23 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$tmp[0] = $tmp[0] + 1;
 				$tmp[1] = $tmp[1] . $message . ",";
 				
-				if($tmp[0] == 0){
-				$question = "คุณคิดว่าคุณสามารถทำได้ดีกว่านี้"
-				}
-				
-				if($tmp[0] == 1){
-				$question = "หฟกด"
-				}
-				
-				if($tmp[0] == 2){
-				$question = "123"
-				}
 				
 				$myfile = fopen($fileName, "w");
 				$txtW = $tmp[0] . "|" . $tmp[1];
 				fwrite($myfile, $txtW);
 				fclose($myfile);
+			}
+			
+			if($tmp[0] == 0){
+				$question = "คุณคิดว่าคุณสามารถทำได้ดีกว่านี้"
+			}
+				
+			if($tmp[0] == 1){
+				$question = "หฟกด"
+			}
+
+			if($tmp[0] == 2){
+				$question = "123"
 			}
 			
 			if($tmp[0] >= 3){			
