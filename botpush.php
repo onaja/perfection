@@ -232,13 +232,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$numQ = $tmp[0] + 2;
 				
 				$tmp[0] = $tmp[0] + 1;
-				$tmp[1] = $tmp[1] . $message . ",";
-				
-				if(strpos($message, 'yes') !== false){
-					$count = 123;
-				}
-				
-					
+				$tmp[1] = $tmp[1] . $message . ",";				
 			
 				$myfile = fopen($fileName, "w");
 				$txtW = $tmp[0] . "|" . $tmp[1];
@@ -312,6 +306,10 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				
 				fclose($myfile);
 				unlink($fileName);
+			}
+			
+			if(strpos($message, 'yes') !== false){
+					$count = 123;
 			}
 			
 			
