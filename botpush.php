@@ -312,6 +312,10 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			if($tmp[0] == 15){			
 				$question = "คุณต้องดูดีที่สุดเมื่ออยู่ในที่สาธารณะ";
 			}
+			
+			if($tmp[0] == 16){
+				$question = "ขอบอทวิเคราะห์แพรพ";
+			}
 	
 			if($tmp[0] >= 16){			
 				$myfile = fopen($fileName, "w");
