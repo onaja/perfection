@@ -235,20 +235,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$tmp[1] = $tmp[1] . $message . ",";
 				
 				if(strpos($message, 'yes') !== false){
-					$count++;
-					
-					if($count == 5){
-			$textReplyMessage = "เป็น ";
-                	$textMessage = new TextMessageBuilder($textReplyMessage); 
-						
-						
-			$multiMessage = new MultiMessageBuilder;
-			$multiMessage->add($textMessage);   			
-			
-			$replyData = $multiMessage; 
-			$response = $bot->pushMessage($id,$replyData);		
-	
-					}
+					$count = 123;
 				}
 				
 					
@@ -334,9 +321,13 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$textReplyMessage2 = $tmp[1];
                 	$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
 			
+			$textReplyMessage3 = $count;
+                	$textMessage3 = new TextMessageBuilder($textReplyMessage)3; 
+			
 			$multiMessage = new MultiMessageBuilder;
 			$multiMessage->add($textMessage);   			
 			$multiMessage->add($textMessage2); 
+			$multiMessage->add($textMessage3);
 			$replyData = $multiMessage; 
 			$response = $bot->pushMessage($id,$replyData);		
 /*			
