@@ -87,19 +87,19 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 	$count = 0;
 	
         if (strpos($message, 'สอนบอท') !== false) {
-            $message = "A";
+            $s_message = "A";
         }
         else if($isData > 0){
-            $message = "B";
+            $s_message = "B";
         }
 	else if($isData2 > 0){
-            $message = "C";
+            $s_message = "C";
         }
    	 else if(strpos($message, '123') !== false){
-	    $message = "D";
+	    $s_message = "D";
 	}
 
-        switch ($message) {
+        switch ($s_message) {
             case "A":
 			if (strpos($message, 'สอนบอท') !== false) {
 			 if (strpos($message, 'สอนบอท') !== false) {
@@ -222,6 +222,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fclose($myfile);
 			} else {
 				
+				$message = $message
 				
 				$myfile = fopen($fileName, "r");
 				$txt = fread($myfile,filesize($fileName));
