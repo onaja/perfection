@@ -234,6 +234,24 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$tmp[0] = $tmp[0] + 1;
 				$tmp[1] = $tmp[1] . $message . ",";
 				
+				if(strpos($message, 'yes') !== false){
+					$count++;
+					
+					if($count>=5){
+			$textReplyMessage = "เป็น ";
+                	$textMessage = new TextMessageBuilder($textReplyMessage); 
+						
+						
+			$multiMessage = new MultiMessageBuilder;
+			$multiMessage->add($textMessage);   			
+			$multiMessage->add($textMessage2); 
+			$replyData = $multiMessage; 
+			$response = $bot->pushMessage($id,$replyData);		
+	
+					}
+				}
+				
+					
 			
 				$myfile = fopen($fileName, "w");
 				$txtW = $tmp[0] . "|" . $tmp[1];
