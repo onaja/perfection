@@ -234,7 +234,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				
 				$tmp[0] = $tmp[0] + 1;
 				$tmp[1] = $tmp[1] . $message . ",";	
-				$answer = $tmp[1] . "-" . $count
+				$answer = $tmp[1] . "-" . $count;
 				
 				$temp = explode(",", $tmp[1]);
 			
