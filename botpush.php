@@ -98,11 +98,13 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
    	 else if(strpos($message, 'เริ่มทดสอบ') !== false){
 	    $s_message = "D";
 	} else {
+		 
 		$fileName = $id . ".txt";
 
 		if(file_exists($fileName)) {
 			$s_message = "D";
 		} 
+		 
 	}
 
 
