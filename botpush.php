@@ -309,7 +309,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			}
 			
 			if(strpos($message, 'yes') !== false){
-					$count = 123;
+					$count = "sdioif";
 			}
 			
 			
