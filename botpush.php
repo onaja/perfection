@@ -235,6 +235,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$tmp[0] = $tmp[0] + 1;
 				$tmp[1] = $tmp[1] . $message . ",";	
 				
+				$count = $tmp[2];
 				if(strpos($message, 'yes') !== false ){
 					$count = $tmp[2] + 1;
 				}
