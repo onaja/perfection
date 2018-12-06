@@ -111,7 +111,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 
         switch ($s_message) {
             case "A":
-			if (strpos($message, 'สอนบอท') !== false) {
+			//if (strpos($message, 'สอนบอท') !== false) {
 			 if (strpos($message, 'สอนบอท') !== false) {
 			    $x_tra = str_replace("สอนบอท","", $message);
 			    $pieces = explode("|", $x_tra);
@@ -134,8 +134,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			    $context = stream_context_create($opts);
 			    $returnValue = file_get_contents($url,false,$context);
 
-				  }
-				}
+			 }
+				//}
 			
                     $textReplyMessage = "ขอบคุณที่สอนจ้า";
                     $textMessage = new TextMessageBuilder($textReplyMessage);
@@ -224,6 +224,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 		
 			
 			if(filesize($fileName) == 0 ) {
+				
 				$myfile = fopen($fileName, "x+");
 				
 				$numQ = 2;
@@ -233,6 +234,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fclose($myfile);
 				
 				$answer = $tmp[1] . $message . ",";
+				
 			} else {
 				
 				$myfile = fopen($fileName, "r");
@@ -254,6 +256,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$txtW = $tmp[0] . "|" . $tmp[1] . "|" . $count;
 				fwrite($myfile, $txtW);
 				fclose($myfile);
+				
 			}
 			
 			if($tmp[0] <= 1){			
