@@ -82,10 +82,6 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $data4 = json_decode($json4);
     $isData4 = sizeof($data4);
 
-
-    
-	//$count = 0;
-
         if (strpos($message, 'สอนบอท') !== false) {
             $s_message = "A";
         }
@@ -111,7 +107,6 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 
         switch ($s_message) {
             case "A":
-			//if (strpos($message, 'สอนบอท') !== false) {
 			 if (strpos($message, 'สอนบอท') !== false) {
 			    $x_tra = str_replace("สอนบอท","", $message);
 			    $pieces = explode("|", $x_tra);
@@ -135,7 +130,6 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			    $returnValue = file_get_contents($url,false,$context);
 
 			 }
-				//}
 			
                     $textReplyMessage = "ขอบคุณที่สอนจ้า";
                     $textMessage = new TextMessageBuilder($textReplyMessage);
