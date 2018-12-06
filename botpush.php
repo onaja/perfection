@@ -239,7 +239,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$temp = explode(",", $tmp[1]);
 			
 				$myfile = fopen($fileName, "w");
-				$txtW = $tmp[0] . "|" . $tmp[1];
+				$txtW = $tmp[0] . "|" . $tmp[1] ."-" . $count;
 				fwrite($myfile, $txtW);
 				fclose($myfile);
 			}
@@ -318,7 +318,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$textReplyMessage = $question;
                 	$textMessage = new TextMessageBuilder($textReplyMessage); 
 	
-			$textReplyMessage2 = $answer;
+			$textReplyMessage2 = $txtW;
                 	$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
 				
 			$multiMessage = new MultiMessageBuilder;
