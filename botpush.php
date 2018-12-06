@@ -222,8 +222,6 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fclose($myfile);
 			} else {
 				
-				$message = $message
-				
 				$myfile = fopen($fileName, "r");
 				$txt = fread($myfile,filesize($fileName));
 				fclose($myfile);
