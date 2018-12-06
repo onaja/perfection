@@ -240,7 +240,14 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fclose($myfile);
 			}
 			
-			$question = "sad";
+			if($tmp[0] <= 2){			
+				$question = "sad";
+			}
+			
+			if($tmp[0] >= 3){			
+				$question = "1234";
+			}
+			
 			
 
 			if($tmp[0] >= 5){			
