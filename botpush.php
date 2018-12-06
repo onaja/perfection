@@ -308,7 +308,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				unlink($fileName);
 			}
 			
-			$count = 45;
+			$count = $count + 1;
 		
 			
 			$textReplyMessage = $question;
