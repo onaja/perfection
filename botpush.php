@@ -308,9 +308,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				unlink($fileName);
 			}
 			
-			if(strpos($message, 'yes') !== false){
-					$count = "sdioif";
-			}
+			$count = 789;
 			
 			
 			$textReplyMessage = $question;
