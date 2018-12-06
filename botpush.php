@@ -240,19 +240,20 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fclose($myfile);
 			}
 			
-			if($tmp[0] == 0){
+			if($tmp[0] == 2){
 				$question = "คุณคิดว่าคุณสามารถทำได้ดีกว่านี้"
 			}
-				
-			if($tmp[0] == 1){
-				$question = "หฟกด"
-			}
-
-			if($tmp[0] == 2){
+			
+			if($tmp[0] == 3){
 				$question = "123"
 			}
 			
-			if($tmp[0] >= 3){			
+			if($tmp[0] == 4){
+				$question = "456"
+			}
+			
+
+			if($tmp[0] >= 5){			
 				$myfile = fopen($fileName, "w");
 				fwrite($myfile, "");
 				
