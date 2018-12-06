@@ -220,6 +220,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$txtW = "1|";
 				fwrite($myfile, $txtW);
 				fclose($myfile);
+				
+				$txt = fread($myfile,filesize($fileName));
+				$tmp = explode("|", $txt);
 				$tmp[1] = $tmp[1] . $message . ",";
 			} else {
 				
