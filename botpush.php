@@ -240,8 +240,14 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 				$myfile = fopen($fileName, "w");
 				$txtW = $tmp[0] . "|" . $tmp[1];
-			
-				fwrite($myfile, $txtX);
+				
+				if($tmp[0]>=15){
+					$txtW = $tmp[0] . "|" . $tmp[1];
+					$txtX = $txtW . "-" . $count;
+					fwrite($myfile, $txtX);
+				}
+				
+				fwrite($myfile, $txtW);
 				fclose($myfile);
 			}
 			
@@ -313,9 +319,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				unlink($fileName);
 			}
 			
-			if($tmp[0] >= 15){
-				$txtX = $txtW . "-" . $count;
-			}
+			
+
+			
 			
 			
 		
