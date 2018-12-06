@@ -259,7 +259,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fclose($myfile);
 			}
 			
-			if($tmp[0] <= 1){			
+			if($tmp[0] == 1){			
 				$question = "คุณคิดว่า คุณสามารถทำให้ดีกว่านี้ได้";
 			}
 			
