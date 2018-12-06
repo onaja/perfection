@@ -237,7 +237,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				if(strpos($message, 'yes') !== false){
 					$count++;
 					
-					if($count>=5){
+					if($count == 5){
 			$textReplyMessage = "เป็น ";
                 	$textMessage = new TextMessageBuilder($textReplyMessage); 
 						
