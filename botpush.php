@@ -325,6 +325,10 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				unlink($fileName);
 			}
 			
+			$myfile = fopen($fileName, "r");
+			$txt = fread($myfile,filesize($fileName));
+			fclose($myfile);
+			
 			if($tmp[2] >= 5){
 				$textReplyMessage = "คุณมีโอกาสเสี่ยงที่จะเป็นภาวะ Perfectionist นี่เป็นเพียงแบบทดสอบเริ่มต้น ควรไปพบจิตแพทย์เพื่อความแน่ใจ";
 				$textMessage = new TextMessageBuilder($textReplyMessage); 
