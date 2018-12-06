@@ -312,7 +312,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$textReplyMessage = $question;
                 	$textMessage = new TextMessageBuilder($textReplyMessage); 
 	
-			$textReplyMessage2 = "next question ok " . $tmp[0];
+			$textReplyMessage2 = $tmp[1];
                 	$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
 			
 			$multiMessage = new MultiMessageBuilder;
