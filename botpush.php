@@ -234,13 +234,14 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				
 				$tmp[0] = $tmp[0] + 1;
 				$tmp[1] = $tmp[1] . $message . ",";	
-				$count = $count + 1;
+				$count[0] = 0;
+				$count[0] = $count[0] + 1;
 				/*if(strpos($message, 'yes') !== false ){
 					$count = $count + 1;
 				}*/
 				
 				$myfile = fopen($fileName, "w");
-				$txtW = $tmp[0] . "|" . $tmp[1] . "-" . $count;
+				$txtW = $tmp[0] . "|" . $tmp[1] . "-" . $count[0];
 				
 				fwrite($myfile, $txtW);
 				fclose($myfile);
