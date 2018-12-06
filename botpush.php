@@ -218,6 +218,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				
 				$numQ = 2;
 				$txtW = "1|";
+				$count = 0;
 				fwrite($myfile, $txtW);
 				fclose($myfile);
 				
@@ -232,7 +233,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$numQ = $tmp[0] + 2;
 				
 				$tmp[0] = $tmp[0] + 1;
-				$tmp[1] = $tmp[1] . $message . ",";	
+				$tmp[1] = $tmp[1] . $message . "," . $count;	
 				
 				$temp = explode(",", $tmp[1]);
 			
@@ -327,6 +328,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			$textReplyMessage5 = $temp[2];
                 	$textMessage5 = new TextMessageBuilder($textReplyMessage5); 
+			
+			
 			
 		
 			$multiMessage = new MultiMessageBuilder;
