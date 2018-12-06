@@ -236,7 +236,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$tmp[1] = $tmp[1] . $message . ",";	
 				
 				if(strpos($message, 'yes') !== false ){
-					$count = $count + 1;
+					$count = $count +1;
+						
 				}
 				
 				$myfile = fopen($fileName, "w");
