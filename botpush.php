@@ -240,7 +240,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				}
 				
 				$myfile = fopen($fileName, "w");
-				$txtW = $tmp[0] . "|" . $tmp[1] . "-" . $count[0];
+				$txtW = $tmp[0] . "|" . $tmp[1] . "-" . $count;
 				
 				fwrite($myfile, $txtW);
 				fclose($myfile);
