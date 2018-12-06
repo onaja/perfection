@@ -233,6 +233,18 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$tmp[0] = $tmp[0] + 1;
 				$tmp[1] = $tmp[1] . $message . ",";
 				
+				if($tmp[0] == 0){
+				$question = "คุณคิดว่าคุณสามารถทำได้ดีกว่านี้"
+				}
+				
+				if($tmp[0] == 1){
+				$question = "หฟกด"
+				}
+				
+				if($tmp[0] == 2){
+				$question = "123"
+				}
+				
 				
 				$myfile = fopen($fileName, "w");
 				$txtW = $tmp[0] . "|" . $tmp[1];
@@ -250,14 +262,14 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 	
 			$textReplyMessage = "next question ok " . $tmp[0];
-			
-			
-			
                 	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			
+			$textReplyMessage2 = $question;
+                	$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
 			
 			$multiMessage = new MultiMessageBuilder;
 			$multiMessage->add($textMessage);   			
-			
+			$multiMessage->add($textMessage2); 
 			$replyData = $multiMessage; 
 			$response = $bot->pushMessage($id,$replyData);		
 /*			
