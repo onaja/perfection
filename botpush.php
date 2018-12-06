@@ -313,7 +313,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$question = "คุณต้องดูดีที่สุดเมื่ออยู่ในที่สาธารณะ";
 			}
 	
-			if($tmp[0] >= 15){			
+			if($tmp[0] >= 16){			
 				$myfile = fopen($fileName, "w");
 				fwrite($myfile, "");
 				
