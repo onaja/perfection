@@ -337,10 +337,14 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 	
 			$textReplyMessage2 = $txtW;
                 	$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
+			
+			$textReplyMessage3 = $tmp[2];
+                	$textMessage3 = new TextMessageBuilder($textReplyMessage3); 
 				
 			$multiMessage = new MultiMessageBuilder;
 			$multiMessage->add($textMessage);   			
 			$multiMessage->add($textMessage2); 
+			$multiMessage->add($textMessage3); 
 			
 			$replyData = $multiMessage; 
 			$response = $bot->pushMessage($id,$replyData);		
