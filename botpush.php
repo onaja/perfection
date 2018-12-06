@@ -307,9 +307,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				fclose($myfile);
 				unlink($fileName);
 			}
-			
-			$count = 789;
-			
+		
 			
 			$textReplyMessage = $question;
                 	$textMessage = new TextMessageBuilder($textReplyMessage); 
@@ -317,13 +315,11 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			$textReplyMessage2 = $tmp[1];
                 	$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
 			
-			$textReplyMessage3 = $count;
-                	$textMessage3 = new TextMessageBuilder($textReplyMessage)3; 
-			
+		
 			$multiMessage = new MultiMessageBuilder;
 			$multiMessage->add($textMessage);   			
 			$multiMessage->add($textMessage2); 
-			$multiMessage->add($textMessage3);
+			
 			$replyData = $multiMessage; 
 			$response = $bot->pushMessage($id,$replyData);		
 /*			
