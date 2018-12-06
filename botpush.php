@@ -326,22 +326,33 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			}
 			
 			if($tmp[2] >= 5){
-				$question = "คุณมีโอกาสเสี่ยงที่จะเป็นภาวะ Perfectionist นี่เป็นเพียงแบบทดสอบเริ่มต้น ควรไปพบจิตแพทย์เพื่อความแน่ใจ";
+				$textReplyMessage = "คุณมีโอกาสเสี่ยงที่จะเป็นภาวะ Perfectionist นี่เป็นเพียงแบบทดสอบเริ่มต้น ควรไปพบจิตแพทย์เพื่อความแน่ใจ";
+				$textMessage = new TextMessageBuilder($textReplyMessage); 
+				
+				$multiMessage = new MultiMessageBuilder;
+				$multiMessage->add($textMessage);   
+				
+				$replyData = $multiMessage; 
+				$response = $bot->pushMessage($id,$replyData);	
+			}
+			else{
+				$textReplyMessage = $question;
+				$textMessage = new TextMessageBuilder($textReplyMessage); 
+
+				$textReplyMessage2 = $txtW;
+				$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
+
+				$multiMessage = new MultiMessageBuilder;
+				$multiMessage->add($textMessage);   			
+				$multiMessage->add($textMessage2); 
+
+				$replyData = $multiMessage; 
+				$response = $bot->pushMessage($id,$replyData);	
 			}
 			
-	
-			$textReplyMessage = $question;
-                	$textMessage = new TextMessageBuilder($textReplyMessage); 
-	
-			$textReplyMessage2 = $txtW;
-                	$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
-				
-			$multiMessage = new MultiMessageBuilder;
-			$multiMessage->add($textMessage);   			
-			$multiMessage->add($textMessage2); 
 			
-			$replyData = $multiMessage; 
-			$response = $bot->pushMessage($id,$replyData);		
+	
+				
 /*			
 			if(isset($_SESSION['views'])){
 			$_SESSION['views'] = $_SESSION['views']+ 1;
