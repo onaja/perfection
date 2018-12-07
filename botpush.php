@@ -45,7 +45,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
    
     // แปลงข้อความรูปแบบ JSON  ให้อยู่ในโครงสร้างตัวแปร array
     $events = json_decode($content, true);
-    $accessToken = "Dp5cTXj8NHTYDiKoy/fQeb1zcbXljHoONSe4hCHXj1SIQ2FJCCH7qQXjnvfjxR21PWBquHunHE0HZtRL8Ezq9xf7cxTdeI/fKSKy9uNqwBIn3XicVdrptnh7SW4nD77FZeYQgrBWfpTFW9FG1EEujQdB04t89/1O/w1cDnyilFU=";//copy Channel access token ตอนที่ตั้งค่ามาใส่
+    $accessToken = "cWOQxTGqlQcXRM6o/BakZa9VNahQ/Q5FV2UiqxH93G3Z/Qq1xTGEe4GnUEgcak5W3ks9QmV8SeMUDGbmy1d6yOUBTD71kHqM6sN7M7cHXAfKZ+PuvxINMKICGClKvXMAXvnTvNFHhVacks+qnUVbKwdB04t89/1O/w1cDnyilFU=
+";//copy Channel access token ตอนที่ตั้งค่ามาใส่
     $arrayHeader = array();
     $arrayHeader[] = "Content-Type: application/json";
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
