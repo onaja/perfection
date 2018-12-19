@@ -7,9 +7,9 @@ require_once 'bot_settings.php';
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
-//use LINE\LINEBot\Event;
-//use LINE\LINEBot\Event\BaseEvent;
-//use LINE\LINEBot\Event\MessageEvent;
+use LINE\LINEBot\Event;
+use LINE\LINEBot\Event\BaseEvent;
+use LINE\LINEBot\Event\MessageEvent;
 use LINE\LINEBot\MessageBuilder;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 use LINE\LINEBot\MessageBuilder\StickerMessageBuilder;
@@ -45,8 +45,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
    
     // แปลงข้อความรูปแบบ JSON  ให้อยู่ในโครงสร้างตัวแปร array
     $events = json_decode($content, true);
-    $accessToken = "cWOQxTGqlQcXRM6o/BakZa9VNahQ/Q5FV2UiqxH93G3Z/Qq1xTGEe4GnUEgcak5W3ks9QmV8SeMUDGbmy1d6yOUBTD71kHqM6sN7M7cHXAfKZ+PuvxINMKICGClKvXMAXvnTvNFHhVacks+qnUVbKwdB04t89/1O/w1cDnyilFU=
-";//copy Channel access token ตอนที่ตั้งค่ามาใส่
+    $accessToken = "cWOQxTGqlQcXRM6o/BakZa9VNahQ/Q5FV2UiqxH93G3Z/Qq1xTGEe4GnUEgcak5W3ks9QmV8SeMUDGbmy1d6yOUBTD71kHqM6sN7M7cHXAfKZ+PuvxINMKICGClKvXMAXvnTvNFHhVacks+qnUVbKwdB04t89/1O/w1cDnyilFU=";//copy Channel access token ตอนที่ตั้งค่ามาใส่
     $arrayHeader = array();
     $arrayHeader[] = "Content-Type: application/json";
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
@@ -67,21 +66,16 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $json = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
     $data = json_decode($json);
     $isData = sizeof($data);
-    //collection คำตอบใช่ หรือ ไม่
+    //collection คำตอบ ใช่
     $url2 = 'https://api.mlab.com/api/1/databases/rup_db/collections/yes?apiKey='.$api_key.'';
     $json2 = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/yes?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
     $data2 = json_decode($json2);
     $isData2 = sizeof($data2);
-
+    //collection คำตอบ ไม่
     $url3 = 'https://api.mlab.com/api/1/databases/rup_db/collections/no?apiKey='.$api_key.'';
     $json3 = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/no?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
     $data3 = json_decode($json3);
     $isData3 = sizeof($data3);
-
-    $url4 = 'https://api.mlab.com/api/1/databases/rup_db/collections/question?apiKey='.$api_key.'';
-    $json4 = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/question?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
-    $data4 = json_decode($json4);
-    $isData4 = sizeof($data4);
 
         if (strpos($message, 'สอนบอท') !== false) {
             $s_message = "A";
@@ -89,17 +83,18 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
         else if($isData > 0){
             $s_message = "B";
         }
-	else if($isData2 > 0){
-            $s_message = "C";
-        }
    	 else if(strpos($message, 'เริ่มทดสอบ') !== false){
+	    $s_message = "C";
+	} 
+	else if(strpos($message, 'สอนคำตอบ') !== false){
 	    $s_message = "D";
-	} else {
+	} 
+	else {
 		 
 		$fileName = $id . ".txt";
 
 		if(file_exists($fileName)) {
-			$s_message = "D";
+			$s_message = "C";
 		} 
 		 
 	}
@@ -167,53 +162,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 					$replyData = $multiMessage; 
 				}
 			$response = $bot->replyMessage($replyToken,$replyData);
-						  
-		    break;      
-			case "C":
-			
-				if($isData2 >0){	
-					foreach($data2 as $rec2){
-						$count++;
-						$textReplyMessage = $rec2->system;
-						$textMessage = new TextMessageBuilder($textReplyMessage);   
-						$textReplyMessage2 = $count;
-						$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
-						$multiMessage = new MultiMessageBuilder;
-						$multiMessage->add($textMessage);  
-						$multiMessage->add($textMessage2);  
-						$replyData = $multiMessage; 
-					}
-				}
-				
-				else{
-					$actionBuilder = array(
-					new MessageTemplateActionBuilder(
-						'ใช่',// ข้อความแสดงในปุ่ม
-						'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-						),
-						new MessageTemplateActionBuilder(
-						'ไม่',// ข้อความแสดงในปุ่ม
-						'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-						),                   
-						);
-					$imageUrl = 'https://www.picz.in.th/images/2018/10/23/kFKkru.jpg';    
-					$buttonMessage = new TemplateMessageBuilder('Button Template',
-							new ButtonTemplateBuilder(
-							'คำที่คุณพิมพ์หมายถึง ใช่ หรือ ไม่', // กำหนดหัวเรื่อง
-							'กรุณาเลือก 1 ข้อ', // กำหนดรายละเอียด
-							$imageUrl, // กำหนด url รุปภาพ
-							$actionBuilder  // กำหนด action object
-						)
-						);  
-								
-					$multiMessage = new MultiMessageBuilder;
-					$multiMessage->add($buttonMessage);
-					$replyData = $multiMessage; 
-				}
-			$response = $bot->replyMessage($replyToken,$replyData);
-			
+						 
 		    break;
-			case "D":
+			case "C":
 			
 			$fileName = $id . ".txt";
 		
@@ -243,10 +194,22 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$tmp[1] = $tmp[1] . $message . ",";	
 				
 				$count = $tmp[2];
-				if(strpos($message, 'yes') !== false ){
-					$count = $tmp[2] + 1;
+				
+				if(strpos($message, 'ไม่ใช่') !== false){
+					$count = $tmp[2];
+				}	
+				else{
+					if($isData3 > 0 || strpos($message, 'ไม่') !== false){
+						$count = $tmp[2];
+					}
+					else if($isData2 > 0 || strpos($message, 'ใช่') !== false){
+						$count = $tmp[2] + 1;
+					}
 				}
 				
+				
+				
+
 				$myfile = fopen($fileName, "w");
 				$txtW = $tmp[0] . "|" . $tmp[1] . "|" . $count;
 				fwrite($myfile, $txtW);
@@ -330,9 +293,12 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				$textReplyMessage = "คุณมีโอกาสเสี่ยงที่จะเป็นภาวะ Perfectionist นี่เป็นเพียงแบบทดสอบเริ่มต้น ควรไปพบจิตแพทย์เพื่อความแน่ใจ";
 				$textMessage = new TextMessageBuilder($textReplyMessage); 
 				
+				$textReplyMessage2 = "คุณสามารถสอนคำตอบเพิ่มเติมเกี่ยวกับคำว่า 'ใช่' หรือ 'ไม่' โดยการพิมพ์ : สอนคำตอบ[คำที่ต้องการสอน|ใช่ หรือ ไม่]";
+				$textMessage2 = new TextMessageBuilder($textReplyMessage2);
+				
 				$multiMessage = new MultiMessageBuilder;
 				$multiMessage->add($textMessage);   
-				
+				$multiMessage->add($textMessage2);   
 				$replyData = $multiMessage; 
 				$response = $bot->pushMessage($id,$replyData);	
 				
@@ -349,9 +315,12 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 					$textReplyMessage = "ยินดีด้วย คุณยังไม่มีภาวะเสี่ยงที่จะเป็นภาวะ Perfectionist นี่เป็นเพียงแบบทดสอบเริ่มต้น ควรไปพบจิตแพทย์เพื่อความแน่ใจ";
 					$textMessage = new TextMessageBuilder($textReplyMessage); 
 					
+					$textReplyMessage2 = "คุณสามารถสอนคำตอบเพิ่มเติมเกี่ยวกับคำว่า 'ใช่' หรือ 'ไม่' โดยการพิมพ์ : สอนคำตอบ[คำที่ต้องการสอน|ใช่ หรือ ไม่]";
+					$textMessage2 = new TextMessageBuilder($textReplyMessage2); 
+					
 					$multiMessage = new MultiMessageBuilder;
 					$multiMessage->add($textMessage);   
-					
+					$multiMessage->add($textMessage2); 
 					$replyData = $multiMessage; 
 					$response = $bot->pushMessage($id,$replyData);
 					
@@ -376,7 +345,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 				}	
 			}
 			
-			
+			 break;
 			
 	
 				
@@ -395,11 +364,11 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 			$replyData = $multiMessage; 
 			$response = $bot->pushMessage($id,$replyData);
-*/
+
 			
 				
 			
-			/*for($count = 0 ; $count <15 ; $count++){
+			for($count = 0 ; $count <15 ; $count++){
 	        
 		
     		if($count == 0){
@@ -594,36 +563,98 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 		$response = $bot->pushMessage($id,$replyData);
 			}*/
 			
-		   break;
+		case "D":
+			 if (strpos($message, 'สอนคำตอบ') !== false) {
+			    $x_tra = str_replace("สอนคำตอบ","", $message);
+			    $pieces = explode("|", $x_tra);
+			    $_user=str_replace("[","",$pieces[0]);
+			    $_system=str_replace("]","",$pieces[1]);
+			     //Post New Data
+			   
+		           if($_system == "ใช่"){
+			    $newData = json_encode(
+				      array(
+					'user' => $_user,
+					'system'=> $_system
+				      )
+				    );
+				$opts = array(
+				   'http' => array(
+				   'method' => "POST",
+				   'header' => "Content-type: application/json",
+				   'content' => $newData
+			       )
+			    );
+			    $context = stream_context_create($opts);
+			    $returnValue = file_get_contents($url2,false,$context);
+			   }
+		            else if($_system == "ไม่"){
+				   $newData = json_encode(
+				      array(
+					'user' => $_user,
+					'system'=> $_system
+				      )
+				    );
+				$opts = array(
+				   'http' => array(
+				   'method' => "POST",
+				   'header' => "Content-type: application/json",
+				   'content' => $newData
+			       )
+			    );
+			    $context = stream_context_create($opts);
+			    $returnValue = file_get_contents($url3,false,$context);
+			    }
+			 }
+			
+                    $textReplyMessage = "ขอบคุณที่สอนจ้า";
+                    $textMessage = new TextMessageBuilder($textReplyMessage);
+                    $stickerID = 41;
+                    $packageID = 2;
+                    $stickerMessage = new StickerMessageBuilder($packageID,$stickerID);
+                    
+                    $multiMessage = new MultiMessageBuilder;
+                    $multiMessage->add($textMessage);
+                    $multiMessage->add($stickerMessage);
+                    $replyData = $multiMessage; 
+		    $response = $bot->replyMessage($replyToken,$replyData);
+            break;
+			
+			
+			
+			
         default:
-                    
-            $actionBuilder = array(
-                                new MessageTemplateActionBuilder(
-                                    'ใช่',// ข้อความแสดงในปุ่ม
-                                    'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                                ),
-                                new MessageTemplateActionBuilder(
-                                    'ไม่',// ข้อความแสดงในปุ่ม
-                                    'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                                ),                   
-                            );
-                        
-                    $imageUrl = 'https://www.picz.in.th/images/2018/10/23/kFKkru.jpg';    
-                    $buttonMessage = new TemplateMessageBuilder('Button Template',
-                        new ButtonTemplateBuilder(
-                                'คำที่คุณพิมพ์หมายถึง ใช่ หรือ ไม่', // กำหนดหัวเรื่อง
-                                'กรุณาเลือก 1 ข้อ', // กำหนดรายละเอียด
-                                $imageUrl, // กำหนด url รุปภาพ
-                                $actionBuilder  // กำหนด action object
-                        )
-                    );  
-                    
-                    $textReplyMessage = "หากสิ่งที่คุณหมายถึงไม่ใช่ทั้ง 'ใช่' และ 'ไม่' คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
+                    $answer = rand(1, 6);
+			
+		    if($answer == 1){
+			    $default_answer = "งงจังเลย";
+		    }
+		    if($answer == 2){
+			    $default_answer = "ไม่เข้าใจเลยอ่ะ";
+		    }
+		    if($answer == 3){
+			    $default_answer = "พูดอีกทีได้ไหม";
+		    }
+		    if($answer == 4){
+			    $default_answer = "ว่ายังไงนะ";
+		    }
+		    if($answer == 5){
+			    $default_answer = "พูดใหม่ได้ไหม";
+		    }
+		    if($answer == 6){
+			    $default_answer = "ฟังไม่ทันเลย";
+		    }
+		
+		    $textReplyMessage = $default_answer;
                     $textMessage = new TextMessageBuilder($textReplyMessage); 
+			
+            
+                    $textReplyMessage2 = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
+                    $textMessage2 = new TextMessageBuilder($textReplyMessage2); 
                         
                     $multiMessage = new MultiMessageBuilder;
-                    $multiMessage->add($buttonMessage);
                     $multiMessage->add($textMessage);   
+		    $multiMessage->add($textMessage2);   
                     $replyData = $multiMessage; 
 		   $response = $bot->replyMessage($replyToken,$replyData);
             break;                                         
